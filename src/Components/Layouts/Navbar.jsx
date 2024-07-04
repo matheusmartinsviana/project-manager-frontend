@@ -1,12 +1,12 @@
 import React from 'react';
 import { FaHome, FaTasks } from "react-icons/fa";
-import { FaUserPen, FaFilePen } from "react-icons/fa6";
+import { FaUserPen, FaFilePen, FaRegShareFromSquare } from "react-icons/fa6";
 import logo from '../../assets/logoByFreepik.png';
 import style from './Styles/Navbar.module.css';
 
 export default function Navbar() {
     return (
-        <div className={style.navbarContainer}>
+        <nav className={style.navbarContainer}>
             <picture>
                 <img src={logo} alt="Project Manager Logo" height={80} width={80}/>
             </picture>
@@ -24,6 +24,9 @@ export default function Navbar() {
                     <li><a href="#"> <div className={style.reactIcon}><FaTasks size={20} /></div>Tasks</a></li>
                 </ul>
             </div>
-        </div>
+            <footer>
+                <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">Find out more<FaRegShareFromSquare size={16}/></a>
+            </footer>
+        </nav>
     )
 }
