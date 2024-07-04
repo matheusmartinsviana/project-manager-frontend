@@ -1,2 +1,14 @@
 /* :root {
 } */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Onest', sans-serif;
+}
+
+a, li {
+    text-decoration: none;
+    list-style: none;
+}

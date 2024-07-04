@@ -1,0 +1,29 @@
+.navbarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 200px;
+    flex-direction: column;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.navbarContainer picture img {
+    margin: 60px 0 60px 0;
+}
+
+.navbarItems {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    font-size: .9rem;
+}
+.navbarItems li a {
+    color: white;
+}
+.item li a {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

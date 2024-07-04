@@ -10,3 +10,10 @@ Why I use modular CSS? <br>
 - **Code Maintenance**: You don't have to go through large CSS files to find the styles you want to change. It's easier to maintain and update your code.
 
 - **Better performance**: Styles are only applied where they are needed, you can end up with a smaller, more efficient CSS file.
+
+## Font used
+<a href="https://fonts.google.com/selection/embed" target="_blank">Onest by google fonts</a>
+
+## Icons
+![Config Table](image.png)
+<a href="https://react-icons.github.io/react-icons/" target="_blank">React Icons</a>
