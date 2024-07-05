@@ -1,10 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import style from './Styles/Login.module.css'
 
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [token, setToken] = useState('')
+    const [token, setToken] = useState(localStorage.getItem('token') || '')
+
+    useEffect(() => {
+        const checkTokenExpiry = () => {
+            const tokenExpiry = localStorage.getItem('tokenExpiry')
+            if (tokenExpiry && new Date().getTime() > tokenExpiry) {
+                handleLogout()
+            }
+        }
+
+        const interval = setInterval(checkTokenExpiry, 10 * 60 * 1000) // ms
+        checkTokenExpiry()
+        return () => clearInterval(interval)
+    }, [])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -21,12 +34,19 @@ export default function Login() {
                 })
             })
             const result = await response.json()
+            const expiryTime = new Date().getTime() + 36000000
             setToken(result.token)
-            
+            localStorage.setItem('token', result.token)
+            localStorage.setItem('tokenExpiry', expiryTime)
         } catch (e) {
             console.error('Error: ', e)
         }
+    }
 
+    const handleLogout = () => {
+        setToken('')
+        localStorage.removeItem('token')
+        localStorage.removeItem('tokenExpiry')
     }
 
     return (
@@ -39,7 +59,7 @@ export default function Login() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="email@dominio.com"
+                            placeholder="email@example.com"
                             required
                         />
                         <input
@@ -47,14 +67,16 @@ export default function Login() {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Digite uma senha forte"
+                            placeholder="Write a strong password"
                             required
                         />
                     </div>
                     <button className={style.submitButton} type="submit">
                         Login
                     </button>
-                </form> : <h1>logado</h1>
+                </form>
+                :
+                <button onClick={handleLogout}>Logout</button>
             }
         </>
     )
