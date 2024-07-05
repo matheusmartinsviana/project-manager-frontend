@@ -12,10 +12,10 @@ export default function Navbar() {
             </picture>
             <div className={style.navbarItems}>
                 <ul className={style.item}>
-                    <li><a href="#"> <div className={style.reactIcon}><FaHome size={20} /></div>Home</a></li>
+                    <li><a href="/"> <div className={style.reactIcon}><FaHome size={20} /></div>Home</a></li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="#"> <div className={style.reactIcon}><FaUserPen size={20} /></div>Users</a></li>
+                    <li><a href="/user"> <div className={style.reactIcon}><FaUserPen size={20} /></div>Users</a></li>
                 </ul>
                 <ul className={style.item}>
                     <li><a href="#"> <div className={style.reactIcon}><FaFilePen size={20} /></div>Projects</a></li>

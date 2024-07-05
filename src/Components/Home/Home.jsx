@@ -3,6 +3,8 @@ import style from './Styles/Home.module.css'
 
 export default function Home() {
     return(
-        <></>
+        <div className={style.container}>
+            
+        </div>
     )
 }

@@ -6,8 +6,10 @@ import { Outlet } from 'react-router-dom'
 export default function Body() {
     return (
         <>
-            <Navbar />
-            <Outlet />
+            <div style={{display: "flex"}}>
+                <Navbar />
+                <Outlet />
+            </div>
             <Footer />
         </>
     )
