@@ -1,11 +1,10 @@
 import React from 'react'
-import style from './Styles/User.module.css'
+import style from './Styles/Task.module.css'
 
-export default function User() {
-
+export default function Task() {
     return (
         <div className={style.container}>
-            user
+            task
         </div>
     )
 }

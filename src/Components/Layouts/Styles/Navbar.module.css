@@ -11,8 +11,22 @@
 }
 
 .navbarContainer picture img {
-    margin: 10px 0 10px 0;
-    filter: drop-shadow(0 0 10px rgba(77, 169, 255, 0.322));
+    margin: 20px 0;
+    filter: drop-shadow(0 0 30px rgba(77, 169, 255, 0.322));
+    animation: glow 2s linear infinite;
+    border-radius: 20px;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 20px rgba(7, 92, 204, 0.7));
+    }
 }
 
 .navbarItems {

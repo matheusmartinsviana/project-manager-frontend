@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    background-color: rgb(230, 230, 230);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.295);
+    border-radius: 5px;
+}

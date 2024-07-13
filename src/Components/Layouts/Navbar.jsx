@@ -8,7 +8,7 @@ export default function Navbar() {
     return (
         <nav className={style.navbarContainer}>
             <picture>
-                <img src={logo} alt="Project Manager Logo" height={80} width={80}/>
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" height={60} width={60} />
             </picture>
             <div className={style.navbarItems}>
                 <ul className={style.item}>
@@ -18,14 +18,14 @@ export default function Navbar() {
                     <li><a href="/user"> <div className={style.reactIcon}><FaUserPen size={20} /></div>Users</a></li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="#"> <div className={style.reactIcon}><FaFilePen size={20} /></div>Projects</a></li>
+                    <li><a href="/project"> <div className={style.reactIcon}><FaFilePen size={20} /></div>Projects</a></li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="#"> <div className={style.reactIcon}><FaTasks size={20} /></div>Tasks</a></li>
+                    <li><a href="/task"> <div className={style.reactIcon}><FaTasks size={20} /></div>Tasks</a></li>
                 </ul>
             </div>
             <footer>
-                <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">Find out more<FaRegShareFromSquare size={16}/></a>
+                <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">Find out more<FaRegShareFromSquare size={16} /></a>
             </footer>
         </nav>
     )
