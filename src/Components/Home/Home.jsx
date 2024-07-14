@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from './Styles/Home.module.css';
+import Profile from '../Login/Profile';
 
 const Home = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,6 +20,7 @@ const Home = () => {
 
     return (
         <div className={style.container}>
+            <Profile />
             home
         </div>
     );

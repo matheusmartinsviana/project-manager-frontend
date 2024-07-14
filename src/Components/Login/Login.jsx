@@ -1,7 +1,9 @@
+// Login.js
 import React, { useState, useEffect } from 'react';
 import style from './Styles/Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaRegShareFromSquare } from "react-icons/fa6";
+import Profile from './Profile'; // Importa o componente Profile
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -22,6 +24,13 @@ export default function Login() {
         checkTokenExpiry();
         return () => clearInterval(interval);
     }, []);
+
+    const handleLogout = () => {
+        setToken('');
+        localStorage.removeItem('token');
+        localStorage.removeItem('tokenExpiry');
+        navigate('/login'); // ou outra rota apropriada
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -55,60 +64,55 @@ export default function Login() {
         }
     };
 
-    const handleLogout = () => {
-        setToken('');
-        localStorage.removeItem('token');
-        localStorage.removeItem('tokenExpiry');
-    };
+    // Verifica se há token, se sim, renderiza o componente Profile
+    if (token) {
+        return <Profile />;
+    }
 
     return (
         <div className={style.loginContainer}>
-            {!token ? (
-                <div className={style.loginContent}>
-                    <div className={style.loginAbout}>
-                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" height={80} width={80} />
-                        <h2>Project Manager</h2>
-                        <p>To organize and manage your projects.</p>
-                        <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">Find out more<FaRegShareFromSquare size={16} /></a>
-                    </div>
-                    <div className={style.formFields}>
-                        <h4>Login</h4>
-                        <form onSubmit={handleSubmit}>
-                            <div className={style.formInput}>
-                                <input
-                                    className={style.emailInput}
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="email@example.com"
-                                    required
-                                />
-                                <input
-                                    className={style.passwordInput}
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Write a strong password"
-                                    required
-                                />
-                            </div>
-                            <div className={style.formButton}>
-                                <button className={style.submitButton} type="submit">
-                                    Login
-                                </button>
-                                <Link to="/register">
-                                    <button className={style.registerButton}>
-                                        Register
-                                    </button>
-                                </Link>
-                            </div>
-                            {error && <div className={style.error}>{error}</div>}
-                        </form>
-                    </div>
+            <div className={style.loginContent}>
+                <div className={style.loginAbout}>
+                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" height={80} width={80} />
+                    <h2>Project Manager</h2>
+                    <p>To organize and manage your projects.</p>
+                    <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">Find out more<FaRegShareFromSquare size={16} /></a>
                 </div>
-            ) : (
-                <button onClick={handleLogout}>Logout</button>
-            )}
+                <div className={style.formFields}>
+                    <h4>Login</h4>
+                    <form onSubmit={handleSubmit}>
+                        <div className={style.formInput}>
+                            <input
+                                className={style.emailInput}
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="email@example.com"
+                                required
+                            />
+                            <input
+                                className={style.passwordInput}
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Write your password"
+                                required
+                            />
+                        </div>
+                        <div className={style.formButton}>
+                            <button className={style.submitButton} type="submit">
+                                Login
+                            </button>
+                            <Link to="/register">
+                                <button className={style.registerButton}>
+                                    Register
+                                </button>
+                            </Link>
+                        </div>
+                        {error && <div className={style.error}>{error}</div>}
+                    </form>
+                </div>
+            </div>
         </div>
     );
 }
