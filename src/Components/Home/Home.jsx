@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import style from './Styles/Home.module.css';
 import Profile from '../Login/Profile';
+import Button from '../Button';
+import UsersView from '../UsersView';
 
 const Home = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,7 +23,10 @@ const Home = () => {
     return (
         <div className={style.container}>
             <Profile />
-            home
+            <Button>
+                   Butão
+            </Button>
+            <UsersView />
         </div>
     );
 };

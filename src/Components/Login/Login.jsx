@@ -1,9 +1,8 @@
-// Login.js
 import React, { useState, useEffect } from 'react';
 import style from './Styles/Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaRegShareFromSquare } from "react-icons/fa6";
-import Profile from './Profile'; // Importa o componente Profile
+import Profile from './Profile';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -29,7 +28,7 @@ export default function Login() {
         setToken('');
         localStorage.removeItem('token');
         localStorage.removeItem('tokenExpiry');
-        navigate('/login'); // ou outra rota apropriada
+        navigate('/login');
     };
 
     const handleSubmit = async (event) => {
@@ -64,7 +63,6 @@ export default function Login() {
         }
     };
 
-    // Verifica se há token, se sim, renderiza o componente Profile
     if (token) {
         return <Profile />;
     }
