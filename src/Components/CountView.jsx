@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import style from './Styles/CountView.module.css';
+import DataView from './DataView';
 export default function CountView(props) {
-    const [result, setResult] = useState([]);
+    const [result, setResult] = useState({});
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -41,8 +42,11 @@ export default function CountView(props) {
     }
 
     return (
-        <span className={style.Count}>
-            {props.path}s: {result.length}
-        </span>
+        <main>
+            <span className={style.Count}>
+                {props.path}s: {result.length}
+            </span>
+            <DataView data={result} path={props.path}/>
+        </main>
     );
 }

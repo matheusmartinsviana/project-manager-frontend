@@ -27,9 +27,9 @@ const Home = () => {
             <Profile />
             <About />
             <div className={style.userPath}>
-                <Button onClick={() => navigate('/user')}>Add a new User</Button>
-                <Button onClick={() => navigate('/project')}>Add a new Project</Button>
-                <Button onClick={() => navigate('/task')}>Add a new Task</Button>
+                <Button onClick={() => navigate('/project-manager-frontend/user')}>Add a new User</Button>
+                <Button onClick={() => navigate('/project-manager-frontend/project')}>Add a new Project</Button>
+                <Button onClick={() => navigate('/project-manager-frontend/task')}>Add a new Task</Button>
             </div>
         </div>
     );

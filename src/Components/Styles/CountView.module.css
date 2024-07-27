@@ -13,3 +13,9 @@
     text-transform: capitalize;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.124);
 }
+
+.dataView {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
