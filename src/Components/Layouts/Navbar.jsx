@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaHome, FaTasks } from "react-icons/fa";
 import { FaUserPen, FaFilePen, FaRegShareFromSquare } from "react-icons/fa6";
-import logo from '../../assets/logoByFreepik.png';
 import style from './Styles/Navbar.module.css';
 
 export default function Navbar() {

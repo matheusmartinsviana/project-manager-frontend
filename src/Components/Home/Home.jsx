@@ -14,7 +14,7 @@ const Home = () => {
         if (token) {
             setIsLoggedIn(true);
         } else {
-            window.location.href = '/login';
+            window.location.href = '/project-manager-frontend/login';
         }
     }, []);
 
