@@ -12,16 +12,16 @@ export default function Navbar() {
             </picture>
             <div className={style.navbarItems}>
                 <ul className={style.item}>
-                    <li><a href="/"> <div className={style.reactIcon}><FaHome size={20} /></div>Home</a></li>
+                    <li><a href="/project-manager-frontend/"> <div className={style.reactIcon}><FaHome size={20} /></div>Home</a></li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="/user"> <div className={style.reactIcon}><FaUserPen size={20} /></div>Users</a></li>
+                    <li><a href="/project-manager-frontend/user"> <div className={style.reactIcon}><FaUserPen size={20} /></div>Users</a></li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="/project"> <div className={style.reactIcon}><FaFilePen size={20} /></div>Projects</a></li>
+                    <li><a href="/project-manager-frontend/project"> <div className={style.reactIcon}><FaFilePen size={20} /></div>Projects</a></li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="/task"> <div className={style.reactIcon}><FaTasks size={20} /></div>Tasks</a></li>
+                    <li><a href="/project-manager-frontend/task"> <div className={style.reactIcon}><FaTasks size={20} /></div>Tasks</a></li>
                 </ul>
             </div>
             <footer>

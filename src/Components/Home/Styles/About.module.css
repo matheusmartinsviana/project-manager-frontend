@@ -1,0 +1,26 @@
+.aboutContainer h2{
+    font-weight: 500;
+    transition: all ease-in-out;
+    border-right: 2px solid black;
+    animation: cursorAnim 500ms steps(40) infinite normal, typing 4s steps(40) 1s normal both;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 435px;
+    }
+}
+
+@keyframes cursorAnim {
+    from {
+        border-right-color: black;;
+    }
+    to{
+        border-right-color: transparent;;
+    }
+}

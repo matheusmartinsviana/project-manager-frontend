@@ -9,7 +9,7 @@ export default function Profile() {
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('tokenExpiry');
-        navigate('/login');
+        navigate('/project-manager-frontend/login');
     };
 
     return (

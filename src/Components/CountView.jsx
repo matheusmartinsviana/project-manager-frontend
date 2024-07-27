@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
-export default function UsersView() {
+import style from './Styles/CountView.module.css';
+export default function CountView(props) {
     const [result, setResult] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -8,7 +8,7 @@ export default function UsersView() {
     const fetchData = async () => {
         try {
             console.log(localStorage.getItem('token'));
-            const response = await fetch('http://localhost:8000/api/v1/user/', {
+            const response = await fetch(`http://localhost:8000/api/v1/${props.path}/`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -16,7 +16,7 @@ export default function UsersView() {
                 }
             });
             if (!response.ok) {
-                throw new Error('Error fetching users');
+                throw new Error(`Error fetching ${props.path}`);
             }
             const data = await response.json();
             setResult(data);
@@ -41,10 +41,8 @@ export default function UsersView() {
     }
 
     return (
-        <div>
-            <ul>
-                {result.length}
-            </ul>
-        </div>
+        <span className={style.Count}>
+            {props.path}s: {result.length}
+        </span>
     );
 }

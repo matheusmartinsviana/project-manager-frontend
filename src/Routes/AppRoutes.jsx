@@ -13,13 +13,13 @@ export default function AppRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Body />}>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/user' element={<User />} />
-                    <Route path='/project' element={<Project />} />
-                    <Route path='/task' element={<Task />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<Register />} />
+                <Route path='/project-manager-frontend' element={<Body />}>
+                    <Route path='/project-manager-frontend/' element={<Home />} />
+                    <Route path='/project-manager-frontend/user' element={<User />} />
+                    <Route path='/project-manager-frontend/project' element={<Project />} />
+                    <Route path='/project-manager-frontend/task' element={<Task />} />
+                    <Route path='/project-manager-frontend/login' element={<Login />} />
+                    <Route path='/project-manager-frontend/register' element={<Register />} />
                     <Route path='*' element={<Error />} />
                 </Route>
             </Routes>
