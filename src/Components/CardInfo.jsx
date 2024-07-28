@@ -1,9 +1,8 @@
 import React from 'react';
-import style from './Styles/CardUserInfo.module.css';
+import style from './Styles/CardInfo.module.css';
+import PropTypes from 'prop-types';
 
-export default function CardUserInfo(props) {
-    const { type, id, name, email, title, description } = props;
-
+function CardInfo({ type, id, name, email, title, description }) {
     let content;
 
     switch (type) {
@@ -37,6 +36,13 @@ export default function CardUserInfo(props) {
                 </div>
             );
             break;
+        default:
+            content = (
+                <div className={style.cardContent}>
+                    <h3>Unknown Type</h3>
+                    <p>Content not available for this type.</p>
+                </div>
+            );
     }
 
     return (
@@ -45,3 +51,14 @@ export default function CardUserInfo(props) {
         </article>
     );
 }
+
+CardInfo.propTypes = {
+    type: PropTypes.oneOf(['user', 'project', 'task']).isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string,
+    email: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+};
+
+export default CardInfo

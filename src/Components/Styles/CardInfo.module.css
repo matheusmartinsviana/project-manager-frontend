@@ -1,0 +1,24 @@
+.cardContent {
+    padding: 20px;
+    margin: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    background-color: rgb(197, 197, 197);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .dataViewContainer {
+        width: 100%;
+    }
+
+    .cardContent {
+        padding: 10px;
+        margin: 5px;
+    }
+}
