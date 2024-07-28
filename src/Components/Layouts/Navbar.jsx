@@ -1,9 +1,13 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { FaHome, FaTasks } from "react-icons/fa";
 import { FaUserPen, FaFilePen, FaRegShareFromSquare } from "react-icons/fa6";
 import style from './Styles/Navbar.module.css';
 
 export default function Navbar() {
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     return (
         <nav className={style.navbarContainer}>
             <picture>
@@ -11,21 +15,55 @@ export default function Navbar() {
             </picture>
             <div className={style.navbarItems}>
                 <ul className={style.item}>
-                    <li><a href="/project-manager-frontend/"> <div className={style.reactIcon}><FaHome size={20} /></div>Home</a></li>
+                    <li>
+                        <a
+                            className={currentPath === '/project-manager-frontend/' ? style.activeLink : ''}
+                            href="/project-manager-frontend/"
+                        >
+                            <div className={style.reactIcon}><FaHome size={20} /></div>
+                            Home
+                        </a>
+                    </li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="/project-manager-frontend/user"> <div className={style.reactIcon}><FaUserPen size={20} /></div>Users</a></li>
+                    <li>
+                        <a
+                            className={currentPath === '/project-manager-frontend/user' ? style.activeLink : ''}
+                            href="/project-manager-frontend/user"
+                        >
+                            <div className={style.reactIcon}><FaUserPen size={20} /></div>
+                            Users
+                        </a>
+                    </li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="/project-manager-frontend/project"> <div className={style.reactIcon}><FaFilePen size={20} /></div>Projects</a></li>
+                    <li>
+                        <a
+                            className={currentPath === '/project-manager-frontend/project' ? style.activeLink : ''}
+                            href="/project-manager-frontend/project"
+                        >
+                            <div className={style.reactIcon}><FaFilePen size={20} /></div>
+                            Projects
+                        </a>
+                    </li>
                 </ul>
                 <ul className={style.item}>
-                    <li><a href="/project-manager-frontend/task"> <div className={style.reactIcon}><FaTasks size={20} /></div>Tasks</a></li>
+                    <li>
+                        <a
+                            className={currentPath === '/project-manager-frontend/task' ? style.activeLink : ''}
+                            href="/project-manager-frontend/task"
+                        >
+                            <div className={style.reactIcon}><FaTasks size={20} /></div>
+                            Tasks
+                        </a>
+                    </li>
                 </ul>
             </div>
             <footer>
-                <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">Find out more<FaRegShareFromSquare size={16} /></a>
+                <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">
+                    Find out more<FaRegShareFromSquare size={16} />
+                </a>
             </footer>
         </nav>
-    )
+    );
 }
