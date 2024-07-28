@@ -21,7 +21,7 @@ function CardInfo({ type, id, name, email, title, description }) {
                 <div className={style.cardContent}>
                     <h3>Project Details</h3>
                     <p><strong>ID:</strong> {id}</p>
-                    <p><strong>Title:</strong> {title}</p>
+                    <p><strong>Title:</strong> {name}</p>
                     <p><strong>Description:</strong> {description}</p>
                 </div>
             );

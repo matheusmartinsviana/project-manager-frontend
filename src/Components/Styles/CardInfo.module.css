@@ -1,5 +1,5 @@
 .cardContent {
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     box-sizing: border-box;
     border-radius: 10px;
@@ -10,6 +10,16 @@
     align-items: flex-start;
     text-align: left;
     height: auto;
+    min-height: 150px;
+    max-width: 198px;
+    word-break: normal;
+    overflow: hidden;
+}
+
+.cardContent h3,
+.cardContent p strong {
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {
