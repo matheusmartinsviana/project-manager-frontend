@@ -21,7 +21,7 @@ export default function Navbar() {
                             href="/project-manager-frontend/"
                         >
                             <div className={style.reactIcon}><FaHome size={20} /></div>
-                            Home
+                            <span>Home</span>
                         </a>
                     </li>
                 </ul>
@@ -32,7 +32,7 @@ export default function Navbar() {
                             href="/project-manager-frontend/user"
                         >
                             <div className={style.reactIcon}><FaUserPen size={20} /></div>
-                            Users
+                            <span>Users</span>
                         </a>
                     </li>
                 </ul>
@@ -43,7 +43,7 @@ export default function Navbar() {
                             href="/project-manager-frontend/project"
                         >
                             <div className={style.reactIcon}><FaFilePen size={20} /></div>
-                            Projects
+                            <span>Projects</span>
                         </a>
                     </li>
                 </ul>
@@ -54,14 +54,14 @@ export default function Navbar() {
                             href="/project-manager-frontend/task"
                         >
                             <div className={style.reactIcon}><FaTasks size={20} /></div>
-                            Tasks
+                            <span>Tasks</span>
                         </a>
                     </li>
                 </ul>
             </div>
-            <footer>
+            <footer className={style.navUnderFooter}>
                 <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">
-                    Find out more<FaRegShareFromSquare size={16} />
+                    <span>Find out more</span><FaRegShareFromSquare size={16} />
                 </a>
             </footer>
         </nav>

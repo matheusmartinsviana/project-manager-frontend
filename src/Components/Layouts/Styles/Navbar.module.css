@@ -73,3 +73,39 @@ footer a {
 footer a:hover {
     background-color: transparent;
 }
+
+@media screen and (max-width: 768px) {
+    .navbarItems a {
+        text-transform: none;
+    }
+    .reactIcon i {
+        opacity: 10;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbarContainer {
+        min-width: 100px;
+    }
+    .item a {
+        justify-content: center;
+    }
+
+    .item a span {
+        display: none;
+    }
+    .navUnderFooter a span {
+        display: none;
+    }
+    .navUnderFooter a svg {
+        display: inline;
+        width: 20px;
+        height: auto;
+    }
+}
+
+@media (min-width: 769px) {
+    .item a span {
+        display: inline;
+    }
+}

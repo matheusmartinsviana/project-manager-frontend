@@ -9,18 +9,7 @@ const Home = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            setIsLoggedIn(true);
-        } else {
-            window.location.href = '/project-manager-frontend/login';
-        }
-    }, []);
-
-    if (!isLoggedIn) {
-        return null;
-    }
+    
 
     return (
         <div className={style.container}>
