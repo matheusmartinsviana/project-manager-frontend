@@ -5,6 +5,8 @@ import CountView from '../CountView';
 import Button from '../Button';
 import Modal from 'react-modal';
 import Forms from '../Forms';
+import NavHome from '../Home/NavHome';
+import LoginVerificaion from '../LoginVerification';
 
 Modal.setAppElement('#root');
 
@@ -29,11 +31,13 @@ export default function User() {
 
     return (
         <div className='container'>
-            <Profile />
-            <CountView path="user" />
-            <Button children='Add a new user' onClick={() => openModal('add')} />
-            <Button children='Update user' onClick={() => openModal('update')} />
-            <Button children='Delete user' onClick={() => openModal('delete')} />
+            <LoginVerificaion />
+            <NavHome path='user' />
+            <div className={style.buttonsContainer}>
+                <Button children='Add a new user' onClick={() => openModal('add')} />
+                <Button children='Update user' onClick={() => openModal('update')} />
+                <Button children='Delete user' onClick={() => openModal('delete')} />
+            </div>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

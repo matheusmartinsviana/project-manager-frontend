@@ -2,13 +2,13 @@
     width: 100%;
     min-width: 600px;
     display: flex;
-    align-items: center;
     flex-direction: column;
     margin: 25px;
     background-color: rgb(230, 230, 230);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.295);
     border-radius: 5px;
 }
+
 
 .container2 {
     width: 100%;

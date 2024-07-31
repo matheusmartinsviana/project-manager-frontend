@@ -27,8 +27,8 @@ const FormContent = ({ type, action, onItemAdded }) => {
                     if (response.ok) {
                         const data = await response.json();
                         console.log(data);
-                        if (onItemAdded) onItemAdded(data); // Chama a função com o item adicionado
-                        window.location.reload(); // Recarrega a página
+                        if (onItemAdded) onItemAdded(data);
+                        window.location.reload();
                     } else {
                         console.log('Failed to fetch');
                     }
@@ -50,7 +50,7 @@ const FormContent = ({ type, action, onItemAdded }) => {
                     if (response.ok) {
                         const data = await response.json();
                         console.log(data);
-                        window.location.reload(); // Recarrega a página
+                        window.location.reload();
                     } else {
                         console.log('Failed to fetch');
                     }
@@ -66,7 +66,7 @@ const FormContent = ({ type, action, onItemAdded }) => {
                     if (response.ok) {
                         const data = await response.json();
                         console.log(data);
-                        window.location.reload(); // Recarrega a página
+                        window.location.reload();
                     } else {
                         console.log('Failed to fetch');
                     }

@@ -8,6 +8,9 @@
 
 .lastdata {
     display: flex;
+    align-items: start;
+    flex-direction: row-reverse;
+    justify-content: start;
     flex-wrap: wrap;
 }
 
@@ -27,7 +30,8 @@
     .lastdata {
         justify-content: center;
         align-items: center;
-    }
+        width: 100%;
+}
     .dataViewMainContainer span {
         text-align: center;
     }

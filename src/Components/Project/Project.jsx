@@ -1,13 +1,13 @@
 import React from 'react'
 import style from './Styles/Project.module.css'
-import Profile from '../Login/Profile'
-import CountView from '../CountView'
+import NavHome from '../Home/NavHome'
+import LoginVerificaion from '../LoginVerification'
 
 export default function Project() {
     return (
         <div className='container'>
-            <Profile />
-            <CountView path="project" />
+            <LoginVerificaion />
+            <NavHome path='project'/>
         </div>
     )
 }
