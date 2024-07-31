@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function CardInfo({ type, id, name, email, title, description }) {
     let content;
-
+    
     switch (type) {
         case 'user':
             content = (

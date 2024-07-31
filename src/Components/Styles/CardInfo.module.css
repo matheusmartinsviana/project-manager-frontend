@@ -1,5 +1,4 @@
 .cardContent {
-    position: relative;
     padding: 15px;
     margin: 10px;
     box-sizing: border-box;
@@ -68,15 +67,4 @@
 .cardContent p strong {
     font-size: 1.1rem;
     font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .dataViewContainer {
-        width: 100%;
-    }
-
-    .cardContent {
-        padding: 10px;
-        margin: 5px;
-    }
 }

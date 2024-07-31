@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Button from '../Button';
 import Profile from '../Login/Profile';
 import About from './About';
 import style from './Styles/Home.module.css';
 
 const Home = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const navigate = useNavigate();
-
-    
 
     return (
-        <div className={style.container}>
+        <div className='container2'>
             <Profile />
             <About />
             <div className={style.userPath}>

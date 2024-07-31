@@ -1,17 +1,13 @@
 .Count {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 50px 230px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
     background-color: rgb(203, 203, 203);
     padding: 10px;
     border-radius: 10px;
     text-transform: capitalize;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.124);
+    display: flex;
+    position: absolute;
+    top: 40px;
+    left: 215px;
 }
 
 .dataView {
@@ -19,4 +15,10 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .Count {
+        left: 115px;
+    }
 }

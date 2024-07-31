@@ -11,6 +11,7 @@ Modal.setAppElement('#root');
 export default function User() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [formAction, setFormAction] = useState('add');
+    const [lastAddedItem, setLastAddedItem] = useState(null); // Novo estado
 
     function openModal(action) {
         setFormAction(action);
@@ -21,8 +22,13 @@ export default function User() {
         setModalIsOpen(false);
     }
 
+    function handleItemAdded(item) {
+        setLastAddedItem(item);
+        closeModal();
+    }
+
     return (
-        <div className={style.container}>
+        <div className='container'>
             <Profile />
             <CountView path="user" />
             <Button children='Add a new user' onClick={() => openModal('add')} />
@@ -33,8 +39,18 @@ export default function User() {
                 onRequestClose={closeModal}
                 className={style.modal}
             >
-                <Forms type='user' action={formAction} />
+                <Forms
+                    type='user'
+                    action={formAction}
+                    onItemAdded={handleItemAdded}
+                />
                 <Button onClick={closeModal} />
+                {lastAddedItem && (
+                    <div>
+                        <h4>Last Added User:</h4>
+                        <pre>{JSON.stringify(lastAddedItem, null, 2)}</pre>
+                    </div>
+                )}
             </Modal>
         </div>
     );

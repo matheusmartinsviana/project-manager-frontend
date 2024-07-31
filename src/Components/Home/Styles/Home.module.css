@@ -1,15 +1,3 @@
-.container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 40px;
-    background-color: rgb(230, 230, 230);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.295);
-    border-radius: 5px;
-}
-
 .userPath {
     display: flex;
     padding: 40px 5px;
@@ -21,4 +9,11 @@
 }
 .userPath button:hover {
     background-color: rgb(106, 174, 106);
+}
+
+@media screen and (max-width: 768px) {
+    .userPath {
+        flex-direction: column;
+    }
+    
 }

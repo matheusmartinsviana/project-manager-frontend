@@ -1,11 +1,11 @@
 import React from 'react'
 import style from './Styles/Task.module.css'
-import Profile from '../Login/Profile'
 import CountView from '../CountView'
+import Profile from '../Login/Profile'
 
 export default function Task() {
     return (
-        <div className={style.container}>
+        <div className='container'>
             <Profile />
             <CountView path="task" />
         </div>

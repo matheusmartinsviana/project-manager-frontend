@@ -5,7 +5,7 @@ import CountView from '../CountView'
 
 export default function Project() {
     return (
-        <div className={style.container}>
+        <div className='container'>
             <Profile />
             <CountView path="project" />
         </div>
