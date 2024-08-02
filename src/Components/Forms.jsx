@@ -35,9 +35,10 @@ const FormContent = ({ type, action, onItemAdded }) => {
                     break;
 
                 case 'update':
-                    response = await fetch(`http://localhost:8000/api/v1/${type}/`, {
+                    response = await fetch(`http://localhost:8000/api/v1/${type}/${id}`, {
                         method: "PUT",
                         headers: {
+                            "authorization": localStorage.getItem('token'),
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
@@ -60,16 +61,11 @@ const FormContent = ({ type, action, onItemAdded }) => {
                     response = await fetch(`http://localhost:8000/api/v1/${type}/${id}/`, {
                         method: "DELETE",
                         headers: {
+                            "authorization": localStorage.getItem('token'),
                             "Content-Type": "application/json"
                         }
                     });
-                    if (response.ok) {
-                        const data = await response.json();
-                        console.log(data);
-                        window.location.reload();
-                    } else {
-                        console.log('Failed to fetch');
-                    }
+                    window.location.reload();
                     break;
 
                 default:

@@ -6,23 +6,32 @@ import PropTypes from 'prop-types';
 function DataView({ data, path }) {
     return (
         <div className={style.dataViewMainContainer}>
-            <span>
-                Last <strong>{path}s</strong> created
-            </span>
-            <div className={style.lastdata}>
-                {data.slice(-5).map((item) => (
-                    <section key={item.id} className={style.dataViewContainer}>
-                        <CardInfo
-                            type={path}
-                            id={item.id}
-                            name={item.name}
-                            email={item.email}
-                            title={item.title}
-                            description={item.description}
-                        />
-                    </section>
-                ))}
-            </div>
+            {data && data.lenght > 0 ? (
+                <>
+                    <span>
+                        Last <strong>{path}s</strong> created
+                    </span>
+                    <div className={style.lastdata}>
+                        {data.slice(-5).map((item) => (
+                            <section key={item.id} className={style.dataViewContainer}>
+                                <CardInfo
+                                    type={path}
+                                    id={item.id}
+                                    name={item.name}
+                                    email={item.email}
+                                    title={item.title}
+                                    description={item.description}
+                                />
+                            </section>
+                        ))}
+                    </div>
+                </>
+            ) : (
+                <span>
+                    No <strong>{path}s</strong> has been created yet
+                </span>
+            )
+            }
         </div>
     );
 }
