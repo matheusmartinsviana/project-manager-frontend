@@ -3,9 +3,10 @@ import Button from '../Button';
 import Profile from '../Login/Profile';
 import About from './About';
 import style from './Styles/Home.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-
+    const navigate = useNavigate()
     return (
         <div className='container2'>
             <Profile />
