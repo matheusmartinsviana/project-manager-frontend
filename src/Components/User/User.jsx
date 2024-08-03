@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Profile from '../Login/Profile';
 import style from './Styles/User.module.css';
-import CountView from '../CountView';
 import Button from '../Button';
 import Modal from 'react-modal';
 import Forms from '../Forms';
@@ -13,7 +11,6 @@ Modal.setAppElement('#root');
 export default function User() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [formAction, setFormAction] = useState('add');
-    const [lastAddedItem, setLastAddedItem] = useState(null); // Novo estado
 
     function openModal(action) {
         setFormAction(action);
@@ -49,12 +46,6 @@ export default function User() {
                     onItemAdded={handleItemAdded}
                 />
                 <Button onClick={closeModal} />
-                {lastAddedItem && (
-                    <div>
-                        <h4>Last Added User:</h4>
-                        <pre>{JSON.stringify(lastAddedItem, null, 2)}</pre>
-                    </div>
-                )}
             </Modal>
         </div>
     );
