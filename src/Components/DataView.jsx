@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function DataView({ data, path }) {
     return (
         <div className={style.dataViewMainContainer}>
-            {data && data.lenght > 0 ? (
+            {data ? (
                 <>
                     <span>
                         Last <strong>{path}s</strong> created
