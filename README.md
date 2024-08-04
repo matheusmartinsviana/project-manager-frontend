@@ -17,3 +17,8 @@ Why I use modular CSS? <br>
 ## Icons
 ![Config Table](image.png)
 <a href="https://react-icons.github.io/react-icons/" target="_blank">React Icons</a>
+
+## Backend API used
+Repository: <a href="https://github.com/matheusmartinsviana/project-manager" target="_blank">Click here</a> <br>
+Documentation: <a href="https://matheusmartinsviana.github.io/project-manager-documentation/#api-_" target="_blank">Click here</a>
+
