@@ -24,3 +24,14 @@
         border-right-color: transparent;;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .aboutContainer h2{
+        content: 'Mangez bien, vivez bien';
+        font-size: 1.4rem;
+        max-width: 260px;
+        border-right: 1px solid black;
+        white-space: nowrap;
+    }
+    
+}

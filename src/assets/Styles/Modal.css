@@ -1,0 +1,82 @@
+.modal {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    min-width: 300px;
+    background-color: #dcdcdc;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal button:nth-child(2) {
+    position: absolute;
+    background-color: transparent;
+    box-shadow: none;
+    top: 20px;
+    right: 20px;
+    border-radius: 2%;
+    height: 15px;
+    width: 15px;
+    transition: all ease-in-out .2s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0;
+    z-index: 5;
+}
+
+.modal button:nth-child(2)::after {
+    content: '';
+    height: 2px;
+    width: 16px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 3px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: all ease-in-out .2s;
+}
+
+.modal button:nth-child(2)::before {
+    content: '';
+    height: 2px;
+    width: 16px;
+    border-radius: 3px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transition: all ease-in-out .2s;
+}
+
+.modal button:nth-child(2):hover::after {
+    background-color: rgb(190, 0, 0);
+}
+
+.modal button:nth-child(2):hover::before {
+    background-color: rgb(190, 0, 0);
+}
+
+@media (max-width: 768px) {
+
+    .modal {
+        width: 90%;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+    }
+
+    .modal button:nth-child(2) {
+        top: 10px;
+        right: 10px;
+    }
+}

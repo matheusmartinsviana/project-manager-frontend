@@ -46,7 +46,9 @@ export default function CountView(props) {
             <span className={style.Count}>
                 {props.path}s: {result.length}
             </span>
-            <DataView data={result} path={props.path}/>
+            <div className={style.dataView}>
+                <DataView data={result} path={props.path}/>
+            </div>
         </main>
     );
 }

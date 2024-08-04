@@ -186,7 +186,7 @@
 @media (max-width: 800px) {
     .loginContent {
         flex-direction: column;
-        height: 1000px;
+        height: 100vh;
         justify-content: center;
         align-items: center;
     }

@@ -1,15 +1,16 @@
-import React from 'react'
-import Home from '../Components/Home/Home'
-import Error from '../Components/Error.jsx'
-import Body from '../Components/Layouts/Body'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from '../Components/Login/Login.jsx'
-import Register from '../Components/Login/Register.jsx'
-import User from '../Components/User/User.jsx'
-import Task from '../Components/Task/Task.jsx'
-import Project from '../Components/Project/Project.jsx'
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from '../Components/Home/Home';
+import Error from '../Components/Error.jsx';
+import Body from '../Components/Layouts/Body';
+import Login from '../Components/Login/Login.jsx';
+import Register from '../Components/Login/Register.jsx';
+import User from '../Components/User/User.jsx';
+import Task from '../Components/Task/Task.jsx';
+import Project from '../Components/Project/Project.jsx';
 
 export default function AppRoutes() {
+
     return (
         <BrowserRouter>
             <Routes>
