@@ -27,11 +27,11 @@ const FormContent = ({ type, action, onItemAdded }) => {
                 ...(title && { title }),
             };
 
-            const response = await fetch(`${API_URL}/${type}/${action === 'update' ? id : ''}`, {
+            const response = await fetch(`${API_URL}/${type}/${action === 'update' || action === 'delete' ? id : ''}`, {
                 method: action === 'delete' ? 'DELETE' : action === 'update' ? 'PUT' : 'POST',
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": action === 'update' || action === 'delete' ? localStorage.getItem('token') : undefined,
+                    "Authorization": localStorage.getItem('token')
                 },
                 body: action !== 'delete' ? JSON.stringify(requestBody) : null,
             });
@@ -42,11 +42,11 @@ const FormContent = ({ type, action, onItemAdded }) => {
                 if (onItemAdded) onItemAdded(data);
                 if (action !== 'delete') window.location.reload();
             } else {
-                throw new Error('Failed to fetch');
+                const errorMessage = await response.json()
+                setError(errorMessage)
             }
         } catch (e) {
-            setError(e.message);
-            console.log(e);
+            console.log(e.message)
         }
     };
 
@@ -57,7 +57,6 @@ const FormContent = ({ type, action, onItemAdded }) => {
     return (
         <form className={style.userForms} onSubmit={handleSubmit}>
             <h3>{action} a {type}</h3>
-            {error && <p className={style.error}>{error}</p>}
             {action === 'delete' ? (
                 <>
                     <label htmlFor="id">ID:</label>
@@ -105,6 +104,7 @@ const FormContent = ({ type, action, onItemAdded }) => {
                     <button type="submit">{action === 'add' ? `Add ${type.charAt(0).toUpperCase() + type.slice(1)}` : `Update ${type.charAt(0).toUpperCase() + type.slice(1)}`}</button>
                 </>
             )}
+            {error && <p className={style.error}>{error.error}</p>}
         </form>
     );
 };
