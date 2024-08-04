@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import Forms from '../Forms';
 import NavHome from '../Home/NavHome';
 import LoginVerificaion from '../LoginVerification';
-
+import '../../assets/Styles/Modal.css';
 Modal.setAppElement('#root');
 
 export default function User() {
@@ -22,7 +22,6 @@ export default function User() {
     }
 
     function handleItemAdded(item) {
-        setLastAddedItem(item);
         closeModal();
     }
 
@@ -35,18 +34,20 @@ export default function User() {
                 <Button children='Update user' onClick={() => openModal('update')} />
                 <Button children='Delete user' onClick={() => openModal('delete')} />
             </div>
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                className={style.modal}
-            >
-                <Forms
-                    type='user'
-                    action={formAction}
-                    onItemAdded={handleItemAdded}
-                />
-                <Button onClick={closeModal} />
-            </Modal>
+            <div className={style.modalContainer}>
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    className={'modal'}
+                >
+                    <Forms
+                        type='user'
+                        action={formAction}
+                        onItemAdded={handleItemAdded}
+                    />
+                    <Button onClick={closeModal} />
+                </Modal>
+            </div>
         </div>
     );
 }

@@ -5,7 +5,7 @@ import NavHome from '../Home/NavHome'
 import LoginVerificaion from '../LoginVerification'
 import Button from '../Button'
 import Forms from '../Forms';
-
+import '../../assets/Styles/Modal.css';
 Modal.setAppElement('#root');
 
 export default function Task() {
@@ -22,7 +22,6 @@ export default function Task() {
     }
 
     function handleItemAdded(item) {
-        setLastAddedItem(item);
         closeModal();
     }
 
@@ -38,10 +37,10 @@ export default function Task() {
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                className={style.modal}
+                className={'modal'}
             >
                 <Forms
-                    type='user'
+                    type='task'
                     action={formAction}
                     onItemAdded={handleItemAdded}
                 />

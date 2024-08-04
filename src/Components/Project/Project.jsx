@@ -5,6 +5,7 @@ import LoginVerificaion from '../LoginVerification'
 import Modal from 'react-modal';
 import Button from '../Button';
 import Forms from '../Forms';
+import '../../assets/Styles/Modal.css';
 Modal.setAppElement('#root');
 
 export default function Project() {
@@ -21,7 +22,6 @@ export default function Project() {
     }
 
     function handleItemAdded(item) {
-        setLastAddedItem(item);
         closeModal();
     }
 
@@ -30,17 +30,17 @@ export default function Project() {
             <LoginVerificaion />
             <NavHome path='project' />
             <div className={style.buttonsContainer}>
-                <Button children='Add a new task' onClick={() => openModal('add')} />
-                <Button children='Update task' onClick={() => openModal('update')} />
-                <Button children='Delete task' onClick={() => openModal('delete')} />
+                <Button children='Add a new project' onClick={() => openModal('add')} />
+                <Button children='Update project' onClick={() => openModal('update')} />
+                <Button children='Delete project' onClick={() => openModal('delete')} />
             </div>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                className={style.modal}
+                className={'modal'}
             >
                 <Forms
-                    type='user'
+                    type='project'
                     action={formAction}
                     onItemAdded={handleItemAdded}
                 />
