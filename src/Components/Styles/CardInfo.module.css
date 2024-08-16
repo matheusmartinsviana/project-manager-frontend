@@ -10,10 +10,9 @@
     align-items: flex-start;
     text-align: left;
     height: auto;
-    min-height: 160px;
-    max-width: 198px;
+    height: 160px;
+    width: 198px;
     word-break: break-word;
-    overflow: hidden;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
     transition: background-color 0.3s ease, transform 0.3s ease;
     padding-top: 40px;
