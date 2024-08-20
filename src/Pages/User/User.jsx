@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import style from './Styles/User.module.css';
-import Button from '../Button';
+import Button from '../../Components/Button'
 import Modal from 'react-modal';
-import Forms from '../Forms';
-import NavHome from '../Home/NavHome';
-import LoginVerificaion from '../LoginVerification';
+import Forms from '../../Components/Forms';
+import NavHome from '../../Pages/HomePage/NavHome'
+import LoginVerificaion from '../../Components/LoginVerification';
 import '../../assets/Styles/Modal.css';
 Modal.setAppElement('#root');
 
