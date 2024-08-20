@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../Button';
+import Button from '../../Components/Button'
 import style from './Styles/Home.module.css';
 import { useNavigate } from 'react-router-dom';
 import NavHome from './NavHome';

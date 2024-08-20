@@ -1,4 +1,4 @@
-import CountView from "../CountView";
+import CountView from "../../Components/CountView";
 import Profile from "../Login/Profile";
 import style from "./Styles/NavHome.module.css";
 
