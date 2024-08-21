@@ -6,6 +6,11 @@
     gap: 15px;
 }
 
+.dataViewMainContainer span {
+    color: white;
+    font-weight: 300;
+}
+
 .lastdata {
     display: flex;
     align-items: start;
