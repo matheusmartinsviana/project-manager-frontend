@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../Components/Button';
 import style from './Styles/Home.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +18,12 @@ const Home = () => {
             reader.readAsDataURL(file);
         }
     };
+
+    useEffect(() => {
+        if(!localStorage.getItem("token")){
+            navigate("/login")
+        }
+    })
 
     return (
         <div className="container2" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
