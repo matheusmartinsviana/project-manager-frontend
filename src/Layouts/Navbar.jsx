@@ -3,8 +3,10 @@ import { useLocation } from 'react-router-dom';
 import { FaHome, FaTasks } from "react-icons/fa";
 import { FaUserPen, FaFilePen, FaRegShareFromSquare } from "react-icons/fa6";
 import style from './Styles/Navbar.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
+    const navigate = useNavigate();
     const location = useLocation();
     const currentPath = location.pathname;
 
@@ -18,7 +20,7 @@ export default function Navbar() {
                     <li>
                         <a
                             className={currentPath === '/' ? style.activeLink : ''}
-                            href="/"
+                            onClick={() => navigate('/')}
                         >
                             <div className={style.reactIcon}><FaHome size={20} /></div>
                             <span>Home</span>
@@ -29,7 +31,7 @@ export default function Navbar() {
                     <li>
                         <a
                             className={currentPath === '/user' ? style.activeLink : ''}
-                            href="/user"
+                            onClick={() => navigate('/user')}
                         >
                             <div className={style.reactIcon}><FaUserPen size={20} /></div>
                             <span>Users</span>
@@ -40,7 +42,7 @@ export default function Navbar() {
                     <li>
                         <a
                             className={currentPath === '/project' ? style.activeLink : ''}
-                            href="/project"
+                            onClick={() => navigate('/project')}
                         >
                             <div className={style.reactIcon}><FaFilePen size={20} /></div>
                             <span>Projects</span>
@@ -51,7 +53,7 @@ export default function Navbar() {
                     <li>
                         <a
                             className={currentPath === '/task' ? style.activeLink : ''}
-                            href="/task"
+                            onClick={() => navigate('/task')}
                         >
                             <div className={style.reactIcon}><FaTasks size={20} /></div>
                             <span>Tasks</span>
