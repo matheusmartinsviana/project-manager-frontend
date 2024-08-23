@@ -21,6 +21,8 @@ function DataView({ data, path }) {
                                     email={item.email}
                                     title={item.title}
                                     description={item.description}
+                                    userId={item.userId}
+                                    projectId={item.projectId}
                                 />
                             </section>
                         ))}

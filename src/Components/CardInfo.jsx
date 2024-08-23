@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Styles/CardInfo.module.css';
 import PropTypes from 'prop-types';
 
-export default function CardInfo({ type, id, name, email, title, description }) {
+export default function CardInfo({ type, id, name, email, title, description, userId, projectId }) {
     let content;
     
     switch (type) {
@@ -21,6 +21,7 @@ export default function CardInfo({ type, id, name, email, title, description }) 
                     <p><strong>ID:</strong> {id}</p>
                     <p><strong>Title:</strong> {name}</p>
                     <p><strong>Description:</strong> {description}</p>
+                    <p><strong>User Id:</strong> {userId}</p>
                 </div>
             );
             break;
@@ -30,6 +31,7 @@ export default function CardInfo({ type, id, name, email, title, description }) 
                     <p><strong>ID:</strong> {id}</p>
                     <p><strong>Title:</strong> {title}</p>
                     <p><strong>Description:</strong> {description}</p>
+                    <p><strong>Project:</strong> {projectId}</p>
                 </div>
             );
             break;
