@@ -39,7 +39,7 @@ export default function Register() {
             setSuccess('Account created successfully');
             setLoading(false);
             setTimeout(() => {
-                navigate('/project-manager-frontend/login');
+                navigate('/login');
             }, 3000);
         } catch (e) {
             setError('Registration failed. Please check your details.');
@@ -89,7 +89,7 @@ export default function Register() {
                             <button className={style.submitButton} type="submit" disabled={loading}>
                                 Register
                             </button>
-                            <Link to="/project-manager-frontend/login">
+                            <Link to="/login">
                                 <button className={style.registerButton}>
                                     Login
                                 </button>

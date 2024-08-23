@@ -28,7 +28,7 @@ export default function Login() {
         setToken('');
         localStorage.removeItem('token');
         localStorage.removeItem('tokenExpiry');
-        navigate('/project-manager-frontend/login');
+        navigate('/login');
     };
 
     const handleSubmit = async (event) => {
@@ -57,7 +57,7 @@ export default function Login() {
             setToken(result.token);
             localStorage.setItem('token', result.token);
             localStorage.setItem('tokenExpiry', expiryTime);
-            navigate('/project-manager-frontend/')
+            navigate('/')
         } catch (e) {
             setError('Login failed. Please check your email and password.');
         }
@@ -101,7 +101,7 @@ export default function Login() {
                             <button className={style.submitButton} type="submit">
                                 Login
                             </button>
-                            <Link to="/project-manager-frontend/register">
+                            <Link to="/register">
                                 <button className={style.registerButton}>
                                     Register
                                 </button>
