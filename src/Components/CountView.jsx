@@ -9,7 +9,7 @@ export default function CountView(props) {
     const fetchData = async () => {
         try {
             console.log(localStorage.getItem('token'));
-            const response = await fetch(`http://localhost:8000/api/v1/${props.path}/`, {
+            const response = await fetch(`https://project-manager-74i7.onrender.com/api/v1/${props.path}/`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
