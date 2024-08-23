@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './Styles/Forms.module.css';
 
-const API_URL = 'http://localhost:8000/api/v1';
+const API_URL = 'https://project-manager-74i7.onrender.com/api/v1';
 
 const FormContent = ({ type, action, onItemAdded }) => {
     const [id, setId] = useState('');

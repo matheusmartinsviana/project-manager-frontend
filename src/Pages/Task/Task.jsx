@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import style from './Styles/Project.module.css'
-import NavHome from '../Home/NavHome'
-import LoginVerificaion from '../LoginVerification'
 import Modal from 'react-modal';
-import Button from '../Button';
-import Forms from '../Forms';
+import style from './Styles/Task.module.css'
+import NavHome from '../../Pages/HomePage/NavHome'
+import LoginVerificaion from '../../Components/LoginVerification';
+import Button from '../../Components/Button'
+import Forms from '../../Components/Forms';
 import '../../assets/Styles/Modal.css';
 Modal.setAppElement('#root');
 
-export default function Project() {
+export default function Task() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [formAction, setFormAction] = useState('add');
 
@@ -28,9 +28,9 @@ export default function Project() {
     return (
         <div className='container'>
             <LoginVerificaion />
-            <NavHome path='project' />
+            <NavHome path='task'/>
             <div className={style.buttonsContainer}>
-                <Button children='Add a new project' onClick={() => openModal('add')} />
+                <Button children='Add a new Project' onClick={() => openModal('add')} />
                 <Button children='Update project' onClick={() => openModal('update')} />
                 <Button children='Delete project' onClick={() => openModal('delete')} />
             </div>
@@ -40,13 +40,12 @@ export default function Project() {
                 className={'modal'}
             >
                 <Forms
-                    type='project'
+                    type='task'
                     action={formAction}
                     onItemAdded={handleItemAdded}
                 />
                 <Button onClick={closeModal} />
             </Modal>
         </div>
-
     )
 }

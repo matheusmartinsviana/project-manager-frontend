@@ -8,3 +8,10 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.295);
     border-radius: 5px;
 }
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 5px 20px;
+}

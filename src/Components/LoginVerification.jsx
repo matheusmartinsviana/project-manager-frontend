@@ -11,7 +11,7 @@ export default function LoginVerificaion() {
         if (token) {
             setIsLoggedIn(true);
         } else {
-            navigate('/project-manager-frontend/login');
+            navigate('/login');
         }
     }, []);
 

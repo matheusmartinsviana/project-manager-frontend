@@ -1,71 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from './Styles/Login.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaRegShareFromSquare } from "react-icons/fa6";
-import Profile from './Profile';
 
-export default function Login() {
+export default function Register() {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [token, setToken] = useState(localStorage.getItem('token') || '');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const checkTokenExpiry = () => {
-            const tokenExpiry = localStorage.getItem('tokenExpiry');
-            if (tokenExpiry && new Date().getTime() > tokenExpiry) {
-                handleLogout();
-            }
-        };
-
-        const interval = setInterval(checkTokenExpiry, 10 * 60 * 1000);
-        checkTokenExpiry();
-        return () => clearInterval(interval);
-    }, []);
-
-    const handleLogout = () => {
-        setToken('');
-        localStorage.removeItem('token');
-        localStorage.removeItem('tokenExpiry');
-        navigate('/project-manager-frontend/login');
-    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setError('');
+        setSuccess('');
+        setLoading(true);
 
         try {
-            const response = await fetch("http://localhost:8000/api/v1/user/login", {
+            const response = await fetch("https://project-manager-74i7.onrender.com/api/v1/user/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
+                    name: name,
                     email: email,
                     password: password
                 })
             });
 
             if (!response.ok) {
-                throw new Error('Login failed');
+                throw new Error('Registration failed');
             }
 
-            const result = await response.json();
-            const expiryTime = new Date().getTime() + 36000000;
-
-            setToken(result.token);
-            localStorage.setItem('token', result.token);
-            localStorage.setItem('tokenExpiry', expiryTime);
-            navigate('/project-manager-frontend/')
+            setSuccess('Account created successfully');
+            setLoading(false);
+            setTimeout(() => {
+                navigate('/login');
+            }, 3000);
         } catch (e) {
-            setError('Login failed. Please check your email and password.');
+            setError('Registration failed. Please check your details.');
+            setLoading(false);
         }
     };
-
-    if (token) {
-        return <Profile />;
-    }
 
     return (
         <div className={style.loginContainer}>
@@ -77,9 +57,17 @@ export default function Login() {
                     <a href="https://github.com/matheusmartinsviana/project-manager-frontend" target="_blank" rel="noopener noreferrer">Find out more<FaRegShareFromSquare size={16} /></a>
                 </div>
                 <div className={style.formFields}>
-                    <h4>Login</h4>
+                    <h4>Register</h4>
                     <form onSubmit={handleSubmit}>
                         <div className={style.formInput}>
+                            <input
+                                className={style.nameInput}
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="ex: Matheus"
+                                required
+                            />
                             <input
                                 className={style.emailInput}
                                 type="email"
@@ -93,21 +81,23 @@ export default function Login() {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Write your password"
+                                placeholder="Write a strong password"
                                 required
                             />
                         </div>
                         <div className={style.formButton}>
-                            <button className={style.submitButton} type="submit">
-                                Login
+                            <button className={style.submitButton} type="submit" disabled={loading}>
+                                Register
                             </button>
-                            <Link to="/project-manager-frontend/register">
+                            <Link to="/login">
                                 <button className={style.registerButton}>
-                                    Register
+                                    Login
                                 </button>
                             </Link>
                         </div>
+                        {loading && <div className={style.loading}>Loading...</div>}
                         {error && <div className={style.error}>{error}</div>}
+                        {success && <div className={style.success}>{success}</div>}
                     </form>
                 </div>
             </div>
