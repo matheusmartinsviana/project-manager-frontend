@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import style from './Styles/Forms.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const API_URL = 'https://project-manager-74i7.onrender.com/api/v1';
 
@@ -13,7 +14,7 @@ const FormContent = ({ type, action, onItemAdded }) => {
     const [projectId, setProjectId] = useState('');
     const [title, setTitle] = useState('');
     const [error, setError] = useState(null);
-
+    const navigate = useNavigate()
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -40,11 +41,11 @@ const FormContent = ({ type, action, onItemAdded }) => {
                 const data = await response.json();
                 console.log(data);
                 if (onItemAdded) onItemAdded(data);
-                if (action !== 'delete') window.location.reload();
             } else {
                 const errorMessage = await response.json()
                 setError(errorMessage)
             }
+            navigate("/")
         } catch (e) {
             console.log(e.message)
         }
