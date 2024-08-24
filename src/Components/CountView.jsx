@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import style from './Styles/CountView.module.css';
-import DataView from './DataView';
 export default function CountView(props) {
     const [result, setResult] = useState({});
     const [error, setError] = useState(null);
