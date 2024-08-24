@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Button from '../../Components/Button';
+import Button from '../../Components/General/Button';
 import style from './Styles/Home.module.css';
 import { useNavigate } from 'react-router-dom';
-import NavHome from './NavHome';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -21,7 +20,6 @@ const Home = () => {
 
     return (
         <div className="container" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
-            <NavHome />
             <label htmlFor="wallpaper-input">
                 <input
                     id="wallpaper-input"

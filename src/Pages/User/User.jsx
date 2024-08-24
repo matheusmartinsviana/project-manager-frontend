@@ -1,55 +1,33 @@
 import React, { useState } from 'react';
 import style from './Styles/User.module.css';
-import Button from '../../Components/Button'
-import Modal from 'react-modal';
-import Forms from '../../Components/Forms';
-import LoginVerificaion from '../../Components/LoginVerification';
+import Button from '../../Components/General/Button';
+import LoginVerificaion from '../../Components/General/LoginVerification';
 import '../../assets/Styles/Modal.css';
-import UserCardInfo from '../../Components/User/UserCardInfo';
-import CountView from '../../Components/CountView';
-Modal.setAppElement('#root');
+import UserCardInfo from '../../Components/Entities/User/UserCardInfo';
+import CountView from '../../Components/General/CountView';
+import FormAddUser from '../../Components/Entities/User/Forms/FormAddUser';
+import { useModal } from '../../Context/useModal';
 
 export default function User() {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [formAction, setFormAction] = useState('add');
+    const { openModal } = useModal();
 
-    function openModal(action) {
-        setFormAction(action);
-        setModalIsOpen(true);
-    }
-
-    function closeModal() {
-        setModalIsOpen(false);
-    }
-
-    function handleItemAdded(item) {
-        closeModal();
-    }
+    const handleOpenModal = () => {
+        openModal(
+            <FormAddUser />
+        );
+    };
 
     return (
         <div className='container'>
             <CountView path="user" />
             <LoginVerificaion />
-            <UserCardInfo />
+            <UserCardInfo/>
             <div className={style.buttonsContainer}>
-                <Button children='Add a new user' onClick={() => openModal('add')} />
-                <Button children='Update user' onClick={() => openModal('update')} />
-                <Button children='Delete user' onClick={() => openModal('delete')} />
+                <Button children='Add a new user' onClick={handleOpenModal} />
+                <Button children='Update user' />
+                <Button children='Delete user' />
             </div>
-            <div className={style.modalContainer}>
-                <Modal
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}
-                    className={'modal'}
-                >
-                    <Forms
-                        type='user'
-                        action={formAction}
-                        onItemAdded={handleItemAdded}
-                    />
-                    <Button onClick={closeModal} />
-                </Modal>
-            </div>
+            <div className={style.modalContainer}></div>
         </div>
     );
 }

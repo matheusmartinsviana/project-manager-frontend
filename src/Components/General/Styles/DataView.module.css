@@ -1,0 +1,43 @@
+.dataViewMainContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    gap: 15px;
+}
+
+.dataViewMainContainer span {
+    color: white;
+    font-weight: 300;
+}
+
+.lastdata {
+    display: flex;
+    align-items: start;
+    flex-direction: row-reverse;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.dataViewMainContainer span {
+    padding: 10px 0 0 10px;
+    font-size: 1.1rem;
+}
+
+.dataViewContainer {
+    max-height: 50vh;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+    .lastdata {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+}
+    .dataViewMainContainer span {
+        text-align: center;
+    }
+}
