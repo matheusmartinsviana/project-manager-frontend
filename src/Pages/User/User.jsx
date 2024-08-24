@@ -3,9 +3,10 @@ import style from './Styles/User.module.css';
 import Button from '../../Components/Button'
 import Modal from 'react-modal';
 import Forms from '../../Components/Forms';
-import NavHome from '../../Pages/HomePage/NavHome'
 import LoginVerificaion from '../../Components/LoginVerification';
 import '../../assets/Styles/Modal.css';
+import UserCardInfo from '../../Components/User/UserCardInfo';
+import CountView from '../../Components/CountView';
 Modal.setAppElement('#root');
 
 export default function User() {
@@ -27,8 +28,9 @@ export default function User() {
 
     return (
         <div className='container'>
+            <CountView path="user" />
             <LoginVerificaion />
-            <NavHome path='user' />
+            <UserCardInfo />
             <div className={style.buttonsContainer}>
                 <Button children='Add a new user' onClick={() => openModal('add')} />
                 <Button children='Update user' onClick={() => openModal('update')} />
