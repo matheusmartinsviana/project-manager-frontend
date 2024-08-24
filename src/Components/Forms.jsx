@@ -46,9 +46,46 @@ const FormContent = ({ type, action, onItemAdded }) => {
                 setError(errorMessage)
             }
         } catch (e) {
-            console.log(e.message)
+            setError(e.message);
         }
     };
+
+    const validateForm = () => {
+        if ((type === 'user' && (!name || !email || (action === 'add' && !password))) ||
+            (type === 'project' && (!name || !description || !userId)) ||
+            (type === 'task' && (!title || !description || !projectId))) {
+            setError('Please fill in all mandatory fields.');
+            return false;
+        }
+        return true;
+    };
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch(`${API_URL}/user`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `${localStorage.getItem("token")}`,
+                    },
+                });
+                const data = await response.json();
+                console.log(data); 
+                if (Array.isArray(data)) {
+                    setUsers(data);
+                } else {
+                    setError('Invalid user data.');
+                }
+            } catch (error) {
+                console.error('Error when seeking users:', error);
+                setError('It was not possible to carry the list of users.');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchUsers();
+    }, []);
 
     if (!['user', 'project', 'task'].includes(type)) {
         return <p>Unsupported type</p>;
@@ -60,7 +97,14 @@ const FormContent = ({ type, action, onItemAdded }) => {
             {action === 'delete' ? (
                 <>
                     <label htmlFor="id">ID:</label>
-                    <input type="text" id="id" name="id" placeholder="Type ID" value={id} onChange={(e) => setId(e.target.value)} />
+                    <input
+                        type="text"
+                        id="id"
+                        name="id"
+                        placeholder="Enter the ID"
+                        value={id}
+                        onChange={(e) => setId(e.target.value)}
+                    />
                     <button type="submit">Delete</button>
                 </>
             ) : (
@@ -68,40 +112,121 @@ const FormContent = ({ type, action, onItemAdded }) => {
                     {action === 'update' && (
                         <>
                             <label htmlFor="id">ID:</label>
-                            <input type="text" id="id" name="id" placeholder="Type ID" value={id} onChange={(e) => setId(e.target.value)} />
+                            <input
+                                type="text"
+                                id="id"
+                                name="id"
+                                placeholder="Enter the ID"
+                                value={id}
+                                onChange={(e) => setId(e.target.value)}
+                            />
                         </>
                     )}
                     {type === 'user' && (
                         <>
-                            <label htmlFor="name">Name:</label>
-                            <input type="text" id="name" name="name" placeholder="Type a name" value={name} onChange={(e) => setName(e.target.value)} />
+                            <label htmlFor="name">Nome:</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter the name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
                             <label htmlFor="email">Email:</label>
-                            <input type="email" id="email" name="email" placeholder="Type an email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter the email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                             <label htmlFor="password">Password:</label>
-                            <input type="password" id="password" name="password" placeholder="Type a new password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter the new password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                         </>
                     )}
                     {type === 'project' && (
                         <>
                             <label htmlFor="name">Name:</label>
-                            <input type="text" id="name" name="name" placeholder="Type a name" value={name} onChange={(e) => setName(e.target.value)} />
-                            <label htmlFor="description">Description:</label>
-                            <input type="text" id="description" name="description" placeholder="Type a description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter the name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                            <label htmlFor="description">Descrição:</label>
+                            <input
+                                type="text"
+                                id="description"
+                                name="description"
+                                placeholder="Enter the description"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
                             <label htmlFor="userId">User ID:</label>
-                            <input type="text" id="userId" name="userId" placeholder="Type user ID" value={userId} onChange={(e) => setUserId(e.target.value)} />
+                            {loading ? (
+                                <p>Loading Users...</p>
+                            ) : (
+                                <select
+                                    id="userId"
+                                    name="userId"
+                                    value={userId}
+                                    onChange={(e) => setUserId(e.target.value)}
+                                >
+                                    <option value="" disabled>Select a user</option>
+                                    {users.map((user) => (
+                                        <option key={user.id} value={user.id}>
+                                            {user.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
                         </>
                     )}
                     {type === 'task' && (
                         <>
                             <label htmlFor="title">Title:</label>
-                            <input type="text" id="title" name="title" placeholder="Type a title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                placeholder="Enter the title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
                             <label htmlFor="description">Description:</label>
-                            <input type="text" id="description" name="description" placeholder="Type a description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                            <input
+                                type="text"
+                                id="description"
+                                name="description"
+                                placeholder="Enter the description"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
                             <label htmlFor="projectId">Project ID:</label>
-                            <input type="text" id="projectId" name="projectId" placeholder="Type project ID" value={projectId} onChange={(e) => setProjectId(e.target.value)} />
+                            <input
+                                type="text"
+                                id="projectId"
+                                name="projectId"
+                                placeholder="Enter the project ID"
+                                value={projectId}
+                                onChange={(e) => setProjectId(e.target.value)}
+                            />
                         </>
                     )}
-                    <button type="submit">{action === 'add' ? `Add ${type.charAt(0).toUpperCase() + type.slice(1)}` : `Update ${type.charAt(0).toUpperCase() + type.slice(1)}`}</button>
+                    <button type="submit">
+                        {action === 'add' ? `To add ${type.charAt(0).toUpperCase() + type.slice(1)}` : `To update ${type.charAt(0).toUpperCase() + type.slice(1)}`}
+                    </button>
                 </>
             )}
             {error && <p className={style.error}>{error.error}</p>}
