@@ -3,8 +3,10 @@
     min-width: 600px;
     display: flex;
     flex-direction: column;
-    margin: 25px;
-    background: url('/public/4002676.jpg') no-repeat center;
+    margin: 20px;
+    padding: 40px;
+    /* background: url('/public/4002676.jpg') no-repeat center; */
+    background: white;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.295);
     border-radius: 5px;
 }

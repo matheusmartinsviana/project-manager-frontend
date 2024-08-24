@@ -1,5 +1,10 @@
+import { ModalProvider } from './Context/useModal'
 import AppRoutes from './Routes/AppRoutes'
 
 export default function App() {
-  return <AppRoutes />
+  return (
+      <ModalProvider>
+        <AppRoutes />
+      </ModalProvider>
+  )
 }
