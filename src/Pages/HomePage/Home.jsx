@@ -20,7 +20,7 @@ const Home = () => {
     };
 
     return (
-        <div className="container2" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
+        <div className="container" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
             <NavHome />
             <label htmlFor="wallpaper-input">
                 <input
