@@ -25,7 +25,7 @@ export const ModalProvider = ({ children }) => {
                 <div className="modal">
                     <div className="modal-content">
                         {modalContent}
-                        <button onClick={closeModal}>Close</button>
+                        <button onClick={closeModal}>Cancel</button>
                     </div>
                 </div>
             )}

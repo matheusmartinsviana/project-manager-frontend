@@ -11,6 +11,8 @@ const FormAddUser = ({ onUserAdded }) => {
         email: "",
         password: ""
     });
+    const [success, setSuccess] = useState("");
+    const [error, setError] = useState("");
 
     const handleChange = (e) => {
         setUserData({
@@ -21,41 +23,61 @@ const FormAddUser = ({ onUserAdded }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await addUser(userData);
-        const updatedUsers = await fetchUsers();
-        if (onUserAdded) {
-            onUserAdded(updatedUsers);
+        try {
+            const result = await addUser(userData);
+            if (!result === Error) {
+                setError("Cannot create user")
+            }
+            setSuccess("User added successfully");
+
+            const updatedUsers = await fetchUsers();
+            if (onUserAdded) {
+                onUserAdded(updatedUsers);
+            }
+        } catch (err) {
+            setError(`Error: ${err.message || err}`);
         }
     };
 
     return (
         <Form action={handleSubmit}>
+            Add user
             <input
                 type="text"
                 name="name"
                 title="name"
+                placeholder="Name"
                 minLength={3}
                 maxLength={30}
                 value={userData.name}
                 onChange={handleChange}
+                required
+                autoComplete="off"
             />
             <input
                 type="email"
                 name="email"
                 title="email"
+                placeholder="Email"
                 maxLength={100}
                 value={userData.email}
                 onChange={handleChange}
+                required
+                autoComplete="off"
             />
             <input
                 type="password"
                 name="password"
                 title="password"
+                placeholder="Password"
                 maxLength={40}
                 value={userData.password}
                 onChange={handleChange}
+                required
+                autoComplete="off"
             />
-            <button type="submit">Add user</button>
+            {success ? "User added successfully" : error}
+            <button id="submit-button" type="submit">Add user</button>
         </Form>
     );
 };
