@@ -19,6 +19,7 @@ const useGetUsersData = () => {
       }
       const data = await response.json();
       setUsers(data);
+      return data;
     } catch (err) {
       setError(err.message);
     } finally {

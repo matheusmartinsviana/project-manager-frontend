@@ -1,13 +1,10 @@
-import useGetUsersData from "../../../Hooks/User/Get/useGetUsersData";
+import React from 'react';
 import CardInfo from "../../General/CardInfo";
 import style from "./Style/UserCardInfo.module.css";
 
-const UserCardInfo = () => {
-    const { users, loading, error } = useGetUsersData();
+const UserCardInfo = ({ users }) => {
+    if (!users || users.length === 0) return <p>No users are created</p>;
 
-    if (loading) return <p>Loading users...</p>;
-    if (error) return <p>{error}</p>;
-    if (users.length === 0) return <p>Any users are created</p>
     return (
         <div className={style.userCardInfo}>
             {users.map((user) => (

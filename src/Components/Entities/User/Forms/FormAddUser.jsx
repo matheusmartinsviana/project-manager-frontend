@@ -3,9 +3,9 @@ import useAddUser from "../../../../Hooks/User/Post/useAddUser";
 import Form from "../../../General/Form";
 import useGetUsersData from "../../../../Hooks/User/Get/useGetUsersData";
 
-const FormAddUser = () => {
+const FormAddUser = ({ onUserAdded }) => {
     const { addUser } = useAddUser();
-    const { fetchUsers } = useGetUsersData()
+    const { fetchUsers } = useGetUsersData();
     const [userData, setUserData] = useState({
         name: "",
         email: "",
@@ -22,6 +22,10 @@ const FormAddUser = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await addUser(userData);
+        const updatedUsers = await fetchUsers();
+        if (onUserAdded) {
+            onUserAdded(updatedUsers);
+        }
     };
 
     return (
@@ -51,7 +55,7 @@ const FormAddUser = () => {
                 value={userData.password}
                 onChange={handleChange}
             />
-            <button type="submit" onClick={fetchUsers}>Add user</button>
+            <button type="submit">Add user</button>
         </Form>
     );
 };
