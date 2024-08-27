@@ -1,0 +1,13 @@
+.inputStyled {
+    border: solid rgb(185, 185, 185) 1px;
+    border-radius: 10px;
+    outline: none;
+    padding: 11px 9px;
+    transition: all ease-in-out .4s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.inputStyled:hover,
+.inputStyled:focus {
+    background-color: rgb(240, 240, 240);
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAddUser from "../../../../Hooks/User/Post/useAddUser";
 import Form from "../../../General/Form";
 import useGetUsersData from "../../../../Hooks/User/Get/useGetUsersData";
+import Input from "../../../General/Input";
 
 const FormAddUser = ({ onUserAdded }) => {
     const { addUser } = useAddUser();
@@ -42,7 +43,7 @@ const FormAddUser = ({ onUserAdded }) => {
     return (
         <Form action={handleSubmit}>
             Add user
-            <input
+            <Input
                 type="text"
                 name="name"
                 title="name"
@@ -54,7 +55,7 @@ const FormAddUser = ({ onUserAdded }) => {
                 required
                 autoComplete="off"
             />
-            <input
+            <Input
                 type="email"
                 name="email"
                 title="email"
@@ -65,7 +66,7 @@ const FormAddUser = ({ onUserAdded }) => {
                 required
                 autoComplete="off"
             />
-            <input
+            <Input
                 type="password"
                 name="password"
                 title="password"
