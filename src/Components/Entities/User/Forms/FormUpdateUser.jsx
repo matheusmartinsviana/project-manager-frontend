@@ -4,6 +4,7 @@ import Form from "../../../General/Form";
 import useGetUsersData from "../../../../Hooks/User/Get/useGetUsersData";
 import Input from "../../../General/Input";
 import useUpdateUser from "../../../../Hooks/User/Put/useUpdateUser";
+import Select from "../../../General/Select";
 
 const FormUpdateUser = ({ onUserAction }) => {
     const { updateUser } = useUpdateUser();
@@ -31,7 +32,7 @@ const FormUpdateUser = ({ onUserAction }) => {
         setSelectedUserId(selectedUserId);
 
         const selectedUser = users.find((user) => user.id === selectedUserId);
-
+        console.log(users)
         if (selectedUser) {
             setUserUpdatedData({
                 name: selectedUser.name,
@@ -79,20 +80,20 @@ const FormUpdateUser = ({ onUserAction }) => {
         <>
             <Form>
                 <label htmlFor="user-select">Choose a user to update:</label>
-                <select
+                <Select
                     id="user-select"
-                    value={selectedUserId || ""}
-                    onClick={!users ? getUsersData : null}
+                    defaultValue="0"
+                    onClick={users.length === 0 ? getUsersData : null}
                     onChange={handleUserSelect}
                     required
                 >
-                    <option value="" disabled>Select a user</option>
+                    <option value="0" disabled>Select a user</option>
                     {users.map((user) => (
                         <option key={user.id} value={user.id}>
-                            {user.name}
+                            {user.email}
                         </option>
                     ))}
-                </select>
+                </Select>
             </Form>
 
             {selectedUserId && (
