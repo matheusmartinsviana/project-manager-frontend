@@ -31,3 +31,13 @@
         min-width: 300px;
     }
 }
+
+.error-message {
+    font-size: 1rem;
+    color: red;
+}
+
+.success-message {
+    font-size: 1rem;
+    color: green;
+}

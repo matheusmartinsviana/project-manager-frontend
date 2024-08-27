@@ -12,6 +12,7 @@ const FormAddUser = ({ onUserAdded }) => {
         email: "",
         password: ""
     });
+    const [isSubmiting, setIsSubmiting] = useState(false)
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
 
@@ -24,6 +25,7 @@ const FormAddUser = ({ onUserAdded }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsSubmiting(true)
         setSuccess("")
         setError("")
         try {
@@ -42,6 +44,8 @@ const FormAddUser = ({ onUserAdded }) => {
 
         } catch (err) {
             setError(`Error: ${err.message}`);
+        } finally {
+            setIsSubmiting(false)
         }
     };
 
@@ -82,9 +86,9 @@ const FormAddUser = ({ onUserAdded }) => {
                 required
                 autoComplete="off"
             />
-            {error && <p>{error}</p>}
-            {success && <p>{success}</p>}
-            <button id="submit-button" type="submit">Add user</button>
+            {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
+            <button id="submit-button" type="submit" disabled={isSubmiting ? true : false} >{isSubmiting ? "Adding user..." : "Add user"}</button>
         </Form>
     );
 };
