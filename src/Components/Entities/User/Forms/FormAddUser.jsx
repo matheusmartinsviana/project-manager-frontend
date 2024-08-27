@@ -23,19 +23,24 @@ const FormAddUser = ({ onUserAdded }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setSuccess("")
+        setError("")
         try {
-            const result = await addUser(userData);
-            if (!result === Error) {
-                setError("Cannot create user")
+            const responseUserAdd = await addUser(userData);
+            console.log(responseUserAdd.error)
+            if (responseUserAdd.error) {
+                return setError(`${responseUserAdd.error}`)
             }
-            setSuccess("User added successfully");
 
             const updatedUsers = await fetchUsers();
             if (onUserAdded) {
                 onUserAdded(updatedUsers);
             }
+
+            setSuccess("User added successfully");
+
         } catch (err) {
-            setError(`Error: ${err.message || err}`);
+            setError(`Error: ${err.message}`);
         }
     };
 
@@ -76,7 +81,8 @@ const FormAddUser = ({ onUserAdded }) => {
                 required
                 autoComplete="off"
             />
-            {success ? "User added successfully" : error}
+            {error && <p>{error}</p>}
+            {success && <p>{success}</p>}
             <button id="submit-button" type="submit">Add user</button>
         </Form>
     );

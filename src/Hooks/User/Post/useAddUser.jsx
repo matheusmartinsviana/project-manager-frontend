@@ -11,12 +11,12 @@ const useAddUser = () => {
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
-                return errorData.error
+                const errorMessage = await response.json()
+                throw new Error(errorMessage.error);
             }
 
-            const result = await response.json();
-            return result
+            return await response.json();
+
         } catch (error) {
             console.error('Error adding user:', error);
             return { error: error.message };
