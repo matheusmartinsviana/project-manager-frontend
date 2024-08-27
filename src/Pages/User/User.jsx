@@ -8,6 +8,7 @@ import CountView from '../../Components/General/CountView';
 import FormAddUser from '../../Components/Entities/User/Forms/FormAddUser';
 import { useModal } from '../../Context/useModal';
 import useGetUsersData from "../../Hooks/User/Get/useGetUsersData";
+import FormUpdateUser from '../../Components/Entities/User/Forms/FormUpdateUser';
 
 export default function User() {
     const { openModal } = useModal();
@@ -18,10 +19,19 @@ export default function User() {
         setUsersData(users);
     }, [users]);
 
-    const handleOpenModal = () => {
-        openModal(
-            <FormAddUser onUserAdded={fetchUsers} />
-        );
+    const handleOpenModal = (action) => {
+        switch (action) {
+            case "add":
+                openModal(<FormAddUser onUserAction={fetchUsers} />);
+                break;
+            case "update":
+                openModal(<FormUpdateUser onUserAction={fetchUsers} />);
+                break;
+            case "delete":
+                break;
+            default:
+                return;
+        }
     };
 
     if (loading) return <p>Loading...</p>;
@@ -33,8 +43,8 @@ export default function User() {
             <LoginVerification />
             <UserCardInfo users={usersData} />
             <div className={style.buttonsContainer}>
-                <Button children='Add a new user' onClick={handleOpenModal} />
-                <Button children='Update user' />
+                <Button children='Add a new user' onClick={() => handleOpenModal("add")} />
+                <Button children='Update user' onClick={() => handleOpenModal("update")} />
                 <Button children='Delete user' />
             </div>
             <div className={style.modalContainer}></div>

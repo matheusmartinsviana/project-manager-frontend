@@ -4,7 +4,7 @@ import Form from "../../../General/Form";
 import useGetUsersData from "../../../../Hooks/User/Get/useGetUsersData";
 import Input from "../../../General/Input";
 
-const FormAddUser = ({ onUserAdded }) => {
+const FormAddUser = ({ onUserAction }) => {
     const { addUser } = useAddUser();
     const { fetchUsers } = useGetUsersData();
     const [userData, setUserData] = useState({
@@ -35,9 +35,9 @@ const FormAddUser = ({ onUserAdded }) => {
                 return setError(`${responseUserAdd.error}`)
             }
 
-            const updatedUsers = await fetchUsers();
-            if (onUserAdded) {
-                onUserAdded(updatedUsers);
+            const getUsers = await fetchUsers();
+            if (onUserAction) {
+                onUserAction(getUsers);
             }
 
             setSuccess("User added successfully");
