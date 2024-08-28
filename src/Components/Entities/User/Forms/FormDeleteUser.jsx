@@ -44,7 +44,6 @@ const FormDeleteUser = ({ onUserAction }) => {
         setError("");
 
         try {
-            console.log(selectedUserId)
             const responseUserDelete = await deleteUser(selectedUserId);
             if (responseUserDelete.error) {
                 return setError(`Error: ${responseUserDelete.error}`);
