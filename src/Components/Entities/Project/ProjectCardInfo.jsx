@@ -13,7 +13,7 @@ const ProjectCardInfo = (() => {
             {
                 projects.map((project) => {
                     return (
-                        <CardInfo>
+                        <CardInfo key={project.id}>
                             <p>Name: {project.name}</p>
                             <p>Description: {project.description}</p>
                             <p>User Id: {project.userId}</p>
