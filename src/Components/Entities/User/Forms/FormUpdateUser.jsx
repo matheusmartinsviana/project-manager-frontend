@@ -14,6 +14,7 @@ const FormUpdateUser = ({ onUserAction }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false)
     const [userUpdatedData, setUserUpdatedData] = useState({
         name: "",
         email: "",
@@ -21,13 +22,14 @@ const FormUpdateUser = ({ onUserAction }) => {
     });
 
     const getUsersData = async () => {
+        setLoading(true)
         const usersData = await fetchUsers();
         setUsers(usersData);
+        setLoading(false)
     };
 
     const handleUserSelect = (e) => {
         e.preventDefault()
-
         const selectedUserId = e.target.value;
         setSelectedUserId(selectedUserId);
 
@@ -87,7 +89,7 @@ const FormUpdateUser = ({ onUserAction }) => {
                     onChange={handleUserSelect}
                     required
                 >
-                    <option value="0" disabled>Select a user</option>
+                    <option value="0" disabled>{loading ? "Loading users..." : "Select a user"}</option>
                     {users.map((user) => (
                         <option key={user.id} value={user.id}>
                             {user.email}
