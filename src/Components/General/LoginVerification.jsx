@@ -5,19 +5,18 @@ import style from './Styles/LoginVerificaion.module.css'
 export default function LoginVerificaion() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
-
-    useEffect(() => {
+    const verifyUser = () => {
         const token = localStorage.getItem('token');
         if (token) {
             setIsLoggedIn(true);
+            navigate("/")
         } else {
-            navigate('/login');
+            navigate("/login");
         }
-    }, []);
-
-    if (!isLoggedIn) {
-        return navigate('login');
     }
+    useEffect(() => {
+        verifyUser
+    }, []);
 
     return (
         <>
