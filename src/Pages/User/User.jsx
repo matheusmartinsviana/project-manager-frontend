@@ -9,6 +9,7 @@ import FormAddUser from '../../Components/Entities/User/Forms/FormAddUser';
 import { useModal } from '../../Context/useModal';
 import useGetUsersData from "../../Hooks/User/Get/useGetUsersData";
 import FormUpdateUser from '../../Components/Entities/User/Forms/FormUpdateUser';
+import FormDeleteUser from '../../Components/Entities/User/Forms/FormDeleteUser';
 
 export default function User() {
     const { openModal } = useModal();
@@ -28,6 +29,7 @@ export default function User() {
                 openModal(<FormUpdateUser onUserAction={fetchUsers} />);
                 break;
             case "delete":
+                openModal(<FormDeleteUser onUserAction={fetchUsers} />);
                 break;
             default:
                 return;
@@ -45,7 +47,7 @@ export default function User() {
             <div className={style.buttonsContainer}>
                 <Button children='Add a new user' onClick={() => handleOpenModal("add")} />
                 <Button children='Update user' onClick={() => handleOpenModal("update")} />
-                <Button children='Delete user' />
+                <Button children='Delete user' onClick={() => handleOpenModal("delete")} />
             </div>
             <div className={style.modalContainer}></div>
         </div>
