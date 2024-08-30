@@ -9,7 +9,6 @@ export default function LoginVerificaion() {
         const token = localStorage.getItem('token');
         if (token) {
             setIsLoggedIn(true);
-            navigate("/")
         } else {
             navigate("/login");
         }
