@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import style from './Styles/Project.module.css';
-import Button from '../../Components/General/Button';
-import LoginVerification from '../../Components/General/LoginVerification';
 import '../../assets/Styles/Modal.css';
-import CountView from '../../Components/General/CountView';
 import FormAddProject from '../../Components/Entities/Project/Forms/FormAddProject.jsx';
+import FormUpdateProject from '../../Components/Entities/Project/Forms/FormUpdateProject.jsx';
+import ProjectCardInfo from '../../Components/Entities/Project/ProjectCardInfo.jsx';
+import Button from '../../Components/General/Button';
+import CountView from '../../Components/General/CountView';
+import LoginVerification from '../../Components/General/LoginVerification';
 import { useModal } from '../../Context/useModal';
 import useGetProjectsData from '../../Hooks/Project/Get/useGetProjectsData.jsx';
-import ProjectCardInfo from '../../Components/Entities/Project/ProjectCardInfo.jsx';
+import style from './Styles/Project.module.css';
 
 export default function Project() {
     const { openModal } = useModal();
@@ -24,7 +25,7 @@ export default function Project() {
                 openModal(<FormAddProject onUserAction={fetchProjects} />);
                 break;
             case "update":
-                // openModal(<FormUpdateUser onUserAction={fetchUsers} />);
+                openModal(<FormUpdateProject onUserAction={fetchProjects} />);
                 break;
             case "delete":
                 // openModal(<FormDeleteUser onUserAction={fetchUsers} />);
