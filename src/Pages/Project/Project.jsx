@@ -1,26 +1,53 @@
-import React, { useState } from 'react'
-import style from './Styles/Project.module.css'
-import LoginVerificaion from '../../Components/General/LoginVerification';
-import Modal from 'react-modal';
-import Button from '../../Components/General/Button'
+import React, { useEffect, useState } from 'react';
+import style from './Styles/Project.module.css';
+import Button from '../../Components/General/Button';
+import LoginVerification from '../../Components/General/LoginVerification';
 import '../../assets/Styles/Modal.css';
-import ProjectCardInfo from '../../Components/Entities/Project/ProjectCardInfo';
 import CountView from '../../Components/General/CountView';
-Modal.setAppElement('#root');
+import FormAddProject from '../../Components/Entities/Project/Forms/FormAddProject.jsx';
+import { useModal } from '../../Context/useModal';
+import useGetProjectsData from '../../Hooks/Project/Get/useGetProjectsData.jsx';
+import ProjectCardInfo from '../../Components/Entities/Project/ProjectCardInfo.jsx';
 
 export default function Project() {
-  
+    const { openModal } = useModal();
+    const { projects, loading, error, fetchProjects } = useGetProjectsData();
+    const [projectsData, setprojectsData] = useState(projects);
+
+    useEffect(() => {
+        setprojectsData(projects);
+    }, [projects]);
+
+    const handleOpenModal = (action) => {
+        switch (action) {
+            case "add":
+                openModal(<FormAddProject onUserAction={fetchProjects} />);
+                break;
+            case "update":
+                // openModal(<FormUpdateUser onUserAction={fetchUsers} />);
+                break;
+            case "delete":
+                // openModal(<FormDeleteUser onUserAction={fetchUsers} />);
+                break;
+            default:
+                return;
+        }
+    };
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
         <div className='container'>
-            <LoginVerificaion />
             <CountView path="project" />
-            <ProjectCardInfo />
+            <LoginVerification />
+            <ProjectCardInfo projects={projectsData} />
             <div className={style.buttonsContainer}>
-                <Button children='Add a new project' />
-                <Button children='Update project' />
-                <Button children='Delete project' />
+                <Button children='Add a new project' onClick={() => handleOpenModal("add")} />
+                <Button children='Update project' onClick={() => handleOpenModal("update")} />
+                <Button children='Delete project' onClick={() => handleOpenModal("delete")} />
             </div>
+            <div className={style.modalContainer}></div>
         </div>
-
-    )
+    );
 }

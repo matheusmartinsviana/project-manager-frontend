@@ -12,7 +12,7 @@ const useGetProjectsData = () => {
             const response = await fetch("https://project-manager-74i7.onrender.com/api/v1/project", {
                 method: "GET",
                 headers: {
-                  "Authorization": `${localStorage.getItem("token")}`
+                    "Authorization": `${localStorage.getItem("token")}`
                 }
             })
 
@@ -33,7 +33,7 @@ const useGetProjectsData = () => {
         fetchProjects()
     }, [])
 
-    return { projects, loading, error }
+    return { projects, loading, error, fetchProjects }
 }
 
 export default useGetProjectsData
