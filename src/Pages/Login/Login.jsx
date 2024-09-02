@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from './Styles/Login.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Form, Link, useNavigate } from 'react-router-dom';
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import Profile from './Profile';
 
@@ -55,6 +55,8 @@ export default function Login() {
             const expiryTime = new Date().getTime() + 36000000;
 
             setToken(result.token);
+            localStorage.removeItem('token');
+            localStorage.removeItem('tokenExpiry');
             localStorage.setItem('token', result.token);
             localStorage.setItem('tokenExpiry', expiryTime);
             navigate('/')

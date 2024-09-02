@@ -9,6 +9,7 @@ import LoginVerification from '../../Components/General/LoginVerification';
 import { useModal } from '../../Context/useModal';
 import useGetProjectsData from '../../Hooks/Project/Get/useGetProjectsData.jsx';
 import style from './Styles/Project.module.css';
+import FormDeleteProject from '../../Components/Entities/Project/Forms/FormDeleteProject.jsx';
 
 export default function Project() {
     const { openModal } = useModal();
@@ -28,7 +29,7 @@ export default function Project() {
                 openModal(<FormUpdateProject onUserAction={fetchProjects} />);
                 break;
             case "delete":
-                // openModal(<FormDeleteUser onUserAction={fetchUsers} />);
+                openModal(<FormDeleteProject onUserAction={fetchProjects} />);
                 break;
             default:
                 return;
