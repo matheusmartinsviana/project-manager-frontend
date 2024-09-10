@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import useGetProjectsData from "../../../../Hooks/Project/Get/useGetProjectsData.jsx";
-import useAddProject from "../../../../Hooks/Project/Post/useAddProject.jsx";
+import useGetProjectsData from "../../../../Hooks/Project/Get/UseGetProjectsData.jsx";
 import useGetUsersData from "../../../../Hooks/User/Get/useGetUsersData.jsx";
 import Form from "../../../General/Form.jsx";
 import Input from "../../../General/Input.jsx";

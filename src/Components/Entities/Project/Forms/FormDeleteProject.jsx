@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import Form from "../../../General/Form";
 import Select from "../../../General/Select";
-import useDeleteProject from "../../../../Hooks/Project/Delete/useDeleteProject";
-import useGetProjectsData from "../../../../Hooks/Project/Get/useGetProjectsData";
+import useGetProjectsData from "../../../../Hooks/Project/Get/UseGetProjectsData.jsx";
+import useDeleteProject from "../../../../Hooks/Project/Delete/useDeleteProject.jsx";
 
 const FormDeleteProject = ({ onUserAction }) => {
-    const { deleteProject } = useDeleteProject();
+    const { deleteProject } = useDeleteProject()
     const { projects, fetchProjects } = useGetProjectsData();
     const [selectedProjectId, setSelectedProjectId] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);

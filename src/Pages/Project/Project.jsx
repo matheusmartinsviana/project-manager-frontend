@@ -3,17 +3,17 @@ import '../../assets/Styles/Modal.css';
 import FormAddProject from '../../Components/Entities/Project/Forms/FormAddProject.jsx';
 import FormUpdateProject from '../../Components/Entities/Project/Forms/FormUpdateProject.jsx';
 import ProjectCardInfo from '../../Components/Entities/Project/ProjectCardInfo.jsx';
-import Button from '../../Components/General/Button';
-import CountView from '../../Components/General/CountView';
-import LoginVerification from '../../Components/General/LoginVerification';
-import { useModal } from '../../Context/useModal';
-import useGetProjectsData from '../../Hooks/Project/Get/useGetProjectsData.jsx';
+import Button from '../../Components/General/Button.jsx';
+import CountView from '../../Components/General/CountView.jsx';
+import LoginVerification from '../../Components/General/LoginVerification.jsx';
+import { useModal } from '../../Context/useModal.jsx';
 import style from './Styles/Project.module.css';
 import FormDeleteProject from '../../Components/Entities/Project/Forms/FormDeleteProject.jsx';
+import useGetProjectsData from '../../Hooks/Project/Get/UseGetProjectsData.jsx';
 
 export default function Project() {
     const { openModal } = useModal();
-    const { projects, loading, error, fetchProjects } = useGetProjectsData();
+    const { projects, loading, error, fetchProjects } = useGetProjectsData()
     const [projectsData, setprojectsData] = useState(projects);
 
     useEffect(() => {
