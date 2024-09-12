@@ -1,75 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import style from "./Styles/Login.module.css";
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import Profile from "./Profile";
+import useLogin from "../../Hooks/Login/useLogin";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [error, setError] = useState("");
+  const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
+  const { isLoggedIn, loading, error } = useLogin({ loginInfo });
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkTokenExpiry = () => {
-      const tokenExpiry = localStorage.getItem("tokenExpiry");
-      if (tokenExpiry && new Date().getTime() > tokenExpiry) {
-        handleLogout();
-      }
-    };
-
-    const interval = setInterval(checkTokenExpiry, 10 * 60 * 1000);
-    checkTokenExpiry();
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleLogout = () => {
-    setToken("");
-    localStorage.removeItem("token");
-    localStorage.removeItem("tokenExpiry");
-    navigate("/login");
-  };
-
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setError("");
-
-    try {
-      const response = await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/user/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-            password: password,
-          }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-
-      const result = await response.json();
-      const expiryTime = new Date().getTime() + 36000000;
-
-      setToken(result.token);
-      localStorage.removeItem("token");
-      localStorage.removeItem("tokenExpiry");
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("tokenExpiry", expiryTime);
-      navigate("/");
-    } catch (e) {
-      setError("Login failed. Please check your email and password.");
-    }
+    setLoginInfo({ ...loginInfo });
   };
 
   if (token) {
-    return <Profile />;
+    return navigate("/");
   }
 
   return (
@@ -93,6 +40,7 @@ export default function Login() {
             <FaRegShareFromSquare size={16} />
           </a>
         </div>
+
         <div className={style.formFields}>
           <h4>Login</h4>
           <form onSubmit={handleSubmit}>
@@ -100,26 +48,37 @@ export default function Login() {
               <input
                 className={style.emailInput}
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={loginInfo.email}
+                onChange={(e) =>
+                  setLoginInfo({ ...loginInfo, email: e.target.value })
+                }
                 placeholder="email@example.com"
                 required
               />
               <input
                 className={style.passwordInput}
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={loginInfo.password}
+                onChange={(e) =>
+                  setLoginInfo({ ...loginInfo, password: e.target.value })
+                }
                 placeholder="Write your password"
                 required
               />
             </div>
+
             <div className={style.formButton}>
-              <button className={style.submitButton} type="submit">
-                Login
+              <button
+                className={style.submitButton}
+                type="submit"
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Login"}
               </button>
               <Link to="/register">
-                <button className={style.registerButton}>Register</button>
+                <button className={style.registerButton} type="button">
+                  Register
+                </button>
               </Link>
             </div>
             {error && <div className={style.error}>{error}</div>}
