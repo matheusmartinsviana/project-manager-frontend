@@ -1,6 +1,13 @@
+import { useState } from "react";
+
 const useUpdateTask = () => {
+  const [task, setTask] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const updateTask = async (task, id) => {
     try {
+      setLoading(true);
       const response = await fetch(
         `https://project-manager-74i7.onrender.com/api/v1/task/${id}`,
         {
@@ -17,15 +24,19 @@ const useUpdateTask = () => {
         const errorMessage = await response.json();
         throw new Error(errorMessage.error);
       }
-
-      return await response.json();
+      const result = await response.json();
+      setTask(result);
+      return result;
     } catch (error) {
       console.error("Error updating task:", error);
+      setError(error);
       return { error: error.message };
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { updateTask };
+  return { task, loading, error, updateTask };
 };
 
 export default useUpdateTask;

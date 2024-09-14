@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useGetTasksData = () => {
   const [tasks, setTasks] = useState([]);
@@ -9,7 +9,7 @@ const useGetTasksData = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/project",
+        "https://project-manager-74i7.onrender.com/api/v1/task",
         {
           method: "GET",
           headers: {
@@ -30,6 +30,10 @@ const useGetTasksData = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
 
   return { tasks, loading, error, fetchTasks };
 };

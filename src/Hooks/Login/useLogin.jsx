@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const useLogin = ({ loginInfo }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+const useLogin = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const login = async () => {
+  const login = async (loginInfo) => {
     setLoading(true);
+    setError(""); // Reset error before trying to log in
     try {
       const response = await fetch(
         "https://project-manager-74i7.onrender.com/api/v1/user/login",
@@ -14,7 +15,6 @@ const useLogin = ({ loginInfo }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify({
             email: loginInfo.email,
@@ -28,8 +28,9 @@ const useLogin = ({ loginInfo }) => {
       }
 
       const result = await response.json();
-      setIsLoggedIn(result);
+      setIsLoggedIn(true); // Updated to true if login is successful
       localStorage.setItem("token", result.token);
+      return result;
     } catch (err) {
       setError(err.message || "Login failed");
     } finally {
@@ -37,13 +38,7 @@ const useLogin = ({ loginInfo }) => {
     }
   };
 
-  useEffect(() => {
-    if (loginInfo.email && loginInfo.password) {
-      login();
-    }
-  }, [loginInfo]);
-
-  return { isLoggedIn, loading, error };
+  return { isLoggedIn, login, loading, error };
 };
 
 export default useLogin;

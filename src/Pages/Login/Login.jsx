@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import style from "./Styles/Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegShareFromSquare } from "react-icons/fa6";
-import Profile from "./Profile";
 import useLogin from "../../Hooks/Login/useLogin";
 
 export default function Login() {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
-  const { isLoggedIn, loading, error } = useLogin({ loginInfo });
-  const token = localStorage.getItem("token");
+  const { login, loading, error } = useLogin(); // Remove o parâmetro de login
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setLoginInfo({ ...loginInfo });
-  };
 
-  if (token) {
-    return navigate("/");
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await login(loginInfo); // Passa loginInfo para a função login
+      if (response && response.token) {
+        navigate("/"); // Redireciona para a página inicial se o login for bem-sucedido
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className={style.loginContainer}>

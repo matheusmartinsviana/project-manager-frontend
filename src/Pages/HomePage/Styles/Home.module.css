@@ -1,19 +1,46 @@
 .userPath {
-    display: flex;
-    padding: 40px 5px;
-    gap: 30px;
+  display: flex;
+  padding: 40px 5px;
+  gap: 30px;
 }
 
 .userPath button {
-    background-color: rgb(141, 214, 141);
+  background-color: rgb(141, 214, 141);
 }
 .userPath button:hover {
-    background-color: rgb(106, 174, 106);
+  background-color: rgb(106, 174, 106);
 }
 
 @media screen and (max-width: 768px) {
-    .userPath {
-        flex-direction: column;
-    }
-    
+  .userPath {
+    flex-direction: column;
+  }
+}
+
+.wallpaperSelector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.wallpaperOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wallpaperRadio {
+  display: none;
+}
+
+.wallpaperPreview {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.wallpaperRadio:checked + .wallpaperPreview {
+  border-color: #007bff; /* cor do contorno quando selecionado */
 }
