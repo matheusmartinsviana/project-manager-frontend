@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useWallpaper } from "../../Context/WallpaperContext";
 
 const wallpapers = [
-  "public/4002676.jpg",
-  "public/another-wallpaper.jpg",
-  "public/yet-another-wallpaper.jpg",
+  "public/bg1.webp",
+  "public/bg2.webp",
+  "public/bg3.webp",
 ];
 
 const Home = () => {

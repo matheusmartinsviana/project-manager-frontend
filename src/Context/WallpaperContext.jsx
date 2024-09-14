@@ -4,7 +4,7 @@ import React, { createContext, useState, useContext } from "react";
 const WallpaperContext = createContext();
 
 export const WallpaperProvider = ({ children }) => {
-  const [background, setBackground] = useState("public/4002676.jpg");
+  const [background, setBackground] = useState("public/bg1.webp");
 
   return (
     <WallpaperContext.Provider value={{ background, setBackground }}>
