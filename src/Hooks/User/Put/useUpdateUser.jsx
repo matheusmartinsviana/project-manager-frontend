@@ -3,11 +3,10 @@ const useUpdateUser = () => {
         try {
             const response = await fetch(`https://project-manager-74i7.onrender.com/api/v1/user/${id}`, {
                 method: "PUT",
-                body: JSON.stringify(user),
                 headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": `${localStorage.getItem("token")}`
-                }
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(user),
             });
 
             if (!response.ok) {

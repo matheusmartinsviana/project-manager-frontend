@@ -1,23 +1,27 @@
 import { useState } from "react";
-import style from "./Styles/Login.module.css";
-import { Link, useNavigate } from "react-router-dom";
 import { FaRegShareFromSquare } from "react-icons/fa6";
+import { Link, useNavigate } from "react-router-dom";
 import useLogin from "../../Hooks/Login/useLogin";
+import style from "./Styles/Login.module.css";
 
 export default function Login() {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
-  const { login, loading, error } = useLogin(); // Remove o parâmetro de login
+  const { login, loading, error } = useLogin();
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrorMessage("");
     try {
-      const response = await login(loginInfo); // Passa loginInfo para a função login
-      if (response && response.token) {
-        navigate("/"); // Redireciona para a página inicial se o login for bem-sucedido
+      const response = await login(loginInfo);
+      if (response) {
+        navigate("/");
+      } else {
+        setErrorMessage("Invalid email or password. Please try again.");
       }
     } catch (error) {
-      console.error(error);
+      setErrorMessage("Invalid email or password. Please try again.");
     }
   };
 
@@ -83,7 +87,9 @@ export default function Login() {
                 </button>
               </Link>
             </div>
-            {error && <div className={style.error}>{error}</div>}
+            {errorMessage && (
+              <div className="error-message">{errorMessage}</div>
+            )}
           </form>
         </div>
       </div>

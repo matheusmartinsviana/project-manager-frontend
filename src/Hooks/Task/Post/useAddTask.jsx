@@ -12,11 +12,11 @@ const useAddTask = () => {
         "https://project-manager-74i7.onrender.com/api/v1/task",
         {
           method: "POST",
-          body: JSON.stringify(task),
           headers: {
             "Content-Type": "application/json",
-            Authorization: `${localStorage.getItem("token")}`,
           },
+          body: JSON.stringify(task),
+          credentials: "include",
         }
       );
 

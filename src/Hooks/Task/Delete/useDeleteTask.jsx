@@ -5,9 +5,7 @@ const useDeleteTask = () => {
         `https://project-manager-74i7.onrender.com/api/v1/task/${id}`,
         {
           method: "DELETE",
-          headers: {
-            Authorization: `${localStorage.getItem("token")}`,
-          },
+          credentials: "include",
         }
       );
 

@@ -5,11 +5,11 @@ const useAddProject = () => {
         "https://project-manager-74i7.onrender.com/api/v1/project",
         {
           method: "POST",
-          body: JSON.stringify(project),
           headers: {
             "Content-Type": "application/json",
-            Authorization: `${localStorage.getItem("token")}`,
           },
+          body: JSON.stringify(project),
+          credentials: "include",
         }
       );
 

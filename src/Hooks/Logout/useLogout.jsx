@@ -1,23 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const useLogin = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const useLogout = () => {
+  const [logouted, setLogouted] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const login = async (loginInfo) => {
+  const logout = async () => {
     setLoading(true);
     setError("");
     try {
       const response = await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/user/login",
+        "https://project-manager-74i7.onrender.com/api/v1/user/logout",
         {
           method: "POST",
           credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginInfo),
+          credentials: "include",
         }
       );
 
@@ -28,7 +25,7 @@ const useLogin = () => {
       }
 
       const result = await response.json();
-      setIsLoggedIn(true);
+      setLogouted(result);
       return result;
     } catch (err) {
       setError(err.message || "Login failed");
@@ -38,11 +35,11 @@ const useLogin = () => {
     }
   };
 
-  const logout = () => {
-    setIsLoggedIn(false);
-  };
+  useEffect(() => {
+    logout();
+  });
 
-  return { isLoggedIn, login, logout, loading, error };
+  return { logouted, loading, error };
 };
 
-export default useLogin;
+export default useLogout;

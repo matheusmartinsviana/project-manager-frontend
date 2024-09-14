@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useGetUsersData = () => {
   const [users, setUsers] = useState([]);
@@ -8,19 +8,22 @@ const useGetUsersData = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await fetch("https://project-manager-74i7.onrender.com/api/v1/user", {
-        method: "GET",
-        headers: {
-          "Authorization": `${localStorage.getItem("token")}`
+      const response = await fetch(
+        `https://project-manager-74i7.onrender.com/api/v1/user/`,
+        {
+          method: "GET",
+          credentials: "include",
         }
-      });
+      );
       if (!response.ok) {
-        throw new Error('Error to find users data');
+        throw new Error(
+          `Error to find users data: ${response.status} ${response.statusText}`
+        );
       }
       const data = await response.json();
       setUsers(data);
-      return data;
     } catch (err) {
+      console.error("Fetch users error:", err);
       setError(err.message);
     } finally {
       setLoading(false);

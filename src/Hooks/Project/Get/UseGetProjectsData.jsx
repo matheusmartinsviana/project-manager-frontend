@@ -12,9 +12,7 @@ const useGetProjectsData = () => {
         "https://project-manager-74i7.onrender.com/api/v1/project",
         {
           method: "GET",
-          headers: {
-            Authorization: `${localStorage.getItem("token")}`,
-          },
+          credentials: "include",
         }
       );
 

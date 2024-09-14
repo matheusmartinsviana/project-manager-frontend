@@ -1,5 +1,4 @@
-/* eslint-disable react/no-children-prop */
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./Styles/User.module.css";
 import Button from "../../Components/General/Button";
 import "../../assets/Styles/Modal.css";
@@ -53,18 +52,9 @@ export default function User() {
       <CountView path="user" />
       <UserCardInfo users={usersData} />
       <div className={style.buttonsContainer}>
-        <Button
-          children="Add a new user"
-          onClick={() => handleOpenModal("add")}
-        />
-        <Button
-          children="Update user"
-          onClick={() => handleOpenModal("update")}
-        />
-        <Button
-          children="Delete user"
-          onClick={() => handleOpenModal("delete")}
-        />
+        <Button onClick={() => handleOpenModal("add")}>Add a new user</Button>
+        <Button onClick={() => handleOpenModal("update")}>Update user</Button>
+        <Button onClick={() => handleOpenModal("delete")}>Delete user</Button>
       </div>
       <div className={style.modalContainer}></div>
     </div>

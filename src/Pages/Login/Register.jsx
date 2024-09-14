@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import style from "./Styles/Login.module.css";
-import { Link } from "react-router-dom";
 import { FaRegShareFromSquare } from "react-icons/fa6";
+import { Link, useNavigate } from "react-router-dom";
+import style from "./Styles/Login.module.css";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -27,6 +26,7 @@ export default function Register() {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({
             name: name,
             email: email,

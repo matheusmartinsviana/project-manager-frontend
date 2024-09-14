@@ -5,11 +5,11 @@ const useUpdateProject = () => {
         `https://project-manager-74i7.onrender.com/api/v1/project/${id}`,
         {
           method: "PUT",
-          body: JSON.stringify(project),
           headers: {
             "Content-Type": "application/json",
-            Authorization: `${localStorage.getItem("token")}`,
           },
+          body: JSON.stringify(project),
+          credentials: "include",
         }
       );
 

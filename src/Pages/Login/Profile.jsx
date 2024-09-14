@@ -17,7 +17,7 @@ export default function Profile() {
         localStorage.setItem("profilePhoto", profilePhoto);
       }
     } catch (error) {
-      return <>{error}</>;
+      console.error("Failed to save profile photo:", error);
     }
   };
 
@@ -25,10 +25,19 @@ export default function Profile() {
     changeProfilePhoto(profilePhoto);
   }, [profilePhoto]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("tokenExpiry");
-    navigate("/login");
+  const handleLogout = async () => {
+    try {
+      await fetch(
+        "https://project-manager-74i7.onrender.com/api/v1/user/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   const handlePhotoChange = (e) => {
@@ -83,6 +92,8 @@ export default function Profile() {
           onChange={handleSelectChange}
           className={style.dropdown}
           ref={selectRef}
+          aria-haspopup="true"
+          aria-expanded={showModal}
         >
           <option value="">Options</option>
           <option value="changePhoto">Change Photo</option>
