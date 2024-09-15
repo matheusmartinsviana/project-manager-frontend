@@ -14,7 +14,6 @@ const useLogout = () => {
         {
           method: "POST",
           credentials: "include",
-          credentials: "include",
         }
       );
 

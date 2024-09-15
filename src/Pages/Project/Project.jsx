@@ -43,7 +43,7 @@ export default function Project() {
       }}
     >
       <CountView path="project" />
-      <ProjectCardInfo/>
+      <ProjectCardInfo />
       <div className={style.buttonsContainer}>
         <Button
           children="Add a new project"
