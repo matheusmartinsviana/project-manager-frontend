@@ -13,7 +13,7 @@ import { useWallpaper } from "../../Context/WallpaperContext.jsx";
 
 export default function Task() {
   const { openModal } = useModal();
-  const { tasks, loading, error, fetchTasks } = useGetTaskData();
+  const { fetchTasks } = useGetTaskData();
   const { background } = useWallpaper();
 
   const handleOpenModal = (action) => {
@@ -32,19 +32,15 @@ export default function Task() {
     }
   };
 
-  if (loading) return <p>Loading tasks...</p>;
-  if (error) return <p>Error loading tasks: {error}</p>;
-
   return (
     <div
       className="container"
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
-        height: "100vh",
       }}
     >
-      <CountView path="Task" />
+      <CountView path="task" />
       <TaskCardInfo Task={Task} />
       <div className={style.buttonsContainer}>
         <Button onClick={() => handleOpenModal("add")}>Add a new Task</Button>

@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 
-const useGetTasksData = () => {
-  const [tasks, setTasks] = useState([]);
+const useGetProjectById = () => {
+  const [project, setProject] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const fetchTasks = async () => {
+
+  const fetchProject = async (projectId) => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/task",
+        `https://project-manager-74i7.onrender.com/api/v1/project/${projectId}`,
         {
           method: "GET",
           credentials: "include",
@@ -16,11 +17,11 @@ const useGetTasksData = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to get tasks data");
+        throw new Error("Error to get project data");
       }
 
       const data = await response.json();
-      setTasks(data);
+      setProject(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -29,10 +30,10 @@ const useGetTasksData = () => {
   };
 
   useEffect(() => {
-    fetchTasks();
+    fetchProject();
   }, []);
 
-  return { tasks, loading, error, fetchTasks };
+  return { project, loading, error, fetchProject };
 };
 
-export default useGetTasksData;
+export default useGetProjectById;

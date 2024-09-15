@@ -37,7 +37,7 @@
   object-fit: cover;
 }
 
-h2 {
+.sliderContent h2 {
   color: #757575;
   font-size: 1.6rem;
   transition: all ease-out 0.5s;
@@ -45,7 +45,7 @@ h2 {
   margin: 10px 0;
 }
 
-p {
+.sliderContent p {
   transition: all ease-out 0.5s;
   font-size: 1.2rem;
   color: #555;

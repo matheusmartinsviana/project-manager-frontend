@@ -28,6 +28,7 @@
 
 .wallpaperSelector h2 {
   font-weight: 500;
+  color: rgb(66, 66, 66);
 }
 
 .wallpaperOption {
@@ -49,9 +50,10 @@
 }
 
 .wallpaperRadio:checked + .wallpaperPreview {
-  border-color: #005e9c; /* cor do contorno quando selecionado */
+  border-color: #005e9c;
 }
 
 .wallpaperSelector label img {
   border-radius: 1px;
 }
+

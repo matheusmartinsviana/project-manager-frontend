@@ -15,13 +15,8 @@ import { useWallpaper } from "../../Context/WallpaperContext.jsx";
 
 export default function Project() {
   const { openModal } = useModal();
-  const { projects, loading, error, fetchProjects } = useGetProjectsData();
-  const [projectsData, setprojectsData] = useState(projects);
+  const { fetchProjects } = useGetProjectsData();
   const { background } = useWallpaper();
-
-  useEffect(() => {
-    setprojectsData(projects);
-  }, [projects]);
 
   const handleOpenModal = (action) => {
     switch (action) {
@@ -39,20 +34,16 @@ export default function Project() {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-
   return (
     <div
       className="container"
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
-        height: "100vh",
       }}
     >
       <CountView path="project" />
-      <ProjectCardInfo projects={projectsData} />
+      <ProjectCardInfo/>
       <div className={style.buttonsContainer}>
         <Button
           children="Add a new project"
