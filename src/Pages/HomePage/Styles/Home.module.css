@@ -19,8 +19,15 @@
 
 .wallpaperSelector {
   display: flex;
+  flex-direction: column;
+  align-items: start;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.wallpaperSelector h2 {
+  font-weight: 500;
 }
 
 .wallpaperOption {
@@ -42,5 +49,9 @@
 }
 
 .wallpaperRadio:checked + .wallpaperPreview {
-  border-color: #007bff; /* cor do contorno quando selecionado */
+  border-color: #005e9c; /* cor do contorno quando selecionado */
+}
+
+.wallpaperSelector label img {
+  border-radius: 1px;
 }

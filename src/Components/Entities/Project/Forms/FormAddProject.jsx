@@ -89,7 +89,7 @@ const FormAddProject = ({ onUserAction }) => {
         required
         autoComplete="off"
       />
-      <label htmlFor="user-select">Choose a user for this project:</label>
+      {/* <label htmlFor="user-select">Choose a user for this project:</label>
       <Select
         id="user-select"
         value={projectData.userId}
@@ -104,7 +104,7 @@ const FormAddProject = ({ onUserAction }) => {
             {user.email}
           </option>
         ))}
-      </Select>
+      </Select> */}
       {usersError && <p className="error-message">{usersError}</p>}
       {error && <p className="error-message">{error}</p>}
       {success && <p className="success-message">{success}</p>}
