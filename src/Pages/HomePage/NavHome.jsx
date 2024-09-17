@@ -6,7 +6,6 @@ export default function NavHome({ path }) {
     return (
         <nav className={style.navHome}>
             {path ? <CountView path={path} /> : null}
-            <Profile />
         </nav>
 
     )

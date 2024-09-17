@@ -1,31 +1,35 @@
 .container {
-    width: 100%;
-    min-width: 600px;
-    display: flex;
-    flex-direction: column;
-    margin: 25px;
-    background: url('/public/4002676.jpg') no-repeat center;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.295);
-    border-radius: 5px;
-}
-
-
-.container2 {
-    width: 100%;
-    background: url('/public/4002676.jpg') no-repeat center;
-    min-width: 600px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    margin: 25px;
-    background-color: rgb(230, 230, 230);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.295);
-    border-radius: 5px;
+  width: 100%;
+  min-width: 600px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 20px 20px 20px 200px;
+  padding: 20px;
+  background: url("src/assets/backgrounds/bg1.webp") no-repeat center;
+  background: white;
+  box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.555);
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 768px) {
-    .container {
-        min-width: 300px;
-    }
+  .container {
+    margin: 20px 20px 88px 20px;
+    min-width: 200px;
+  }
+}
+
+.error-message {
+  font-size: 1rem;
+  color: red;
+}
+
+.success-message {
+  font-size: 1rem;
+  color: green;
+}
+
+.loading-message {
+  font-size: 1rem;
+  color: white;
 }

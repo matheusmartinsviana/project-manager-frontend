@@ -1,0 +1,39 @@
+.errorContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+.errorContainer p {
+  font-size: 1rem;
+  font-weight: 350;
+  padding: 10px;
+}
+.errorContainer a {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    text-decoration: underline;
+    font-weight: 450;
+    color: rgb(20, 99, 163);
+}
+.errorContainer a:hover {
+    color: rgb(17, 82, 126);
+}
+.errorContainer img {
+    margin: 20px 0;
+    object-fit: cover;
+    filter: drop-shadow(0 0 20px rgb(82, 33, 0));
+    animation: glow 2s linear infinite;
+    border-radius: 20px;
+    transition: all ease-in-out 0.9s;
+  }
+  
+  .errorContainer img:hover {
+    transform: rotate(360deg);
+  }

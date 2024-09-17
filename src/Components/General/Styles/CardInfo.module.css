@@ -1,0 +1,82 @@
+.cardInfo {
+  margin: 10px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  text-align: left;
+  width: 200px;
+  align-self: start;
+  max-height: 100%;
+  word-break: break-word;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.cardBody p {
+  margin: 0;
+}
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 10px;
+}
+
+.cardInfo:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-5px);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+  height: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  background-color: rgb(37, 37, 37);
+}
+.cardHeader span:nth-child(1) {
+  background-color: rgb(255, 50, 50);
+}
+.cardHeader span:nth-child(2) {
+  background-color: rgb(209, 180, 15);
+}
+.cardHeader span:nth-child(3) {
+  background-color: green;
+}
+.cardHeader span {
+  content: "";
+  width: 10px;
+  z-index: 1;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgb(255, 255, 255));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 10px rgba(179, 179, 179, 0.7));
+  }
+}
+
+@media (max-width: 768px) {
+  .cardInfo {
+    max-width: 100%;
+  }
+}

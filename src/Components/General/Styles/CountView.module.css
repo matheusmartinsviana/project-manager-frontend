@@ -1,0 +1,25 @@
+.Count {
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.124);
+    display: flex;
+    max-width: 120px;
+    color: white;
+    top: 40px;
+    left: 215px;
+}
+
+.dataView {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .Count {
+        left: 115px;
+    }
+}

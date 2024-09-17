@@ -1,218 +1,205 @@
 .loginContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    flex-direction: column;
-    background-color: #000000;
-    width: 100%;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  background-color: #000000;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 4;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
 }
-
 .loginAbout img {
-    margin: 20px 0;
-    filter: drop-shadow(0 0 10px rgba(77, 169, 255, 0.322));
-    animation: glow 5s linear infinite;
-    border-radius: 20px;
+  margin: 20px 0;
+  object-fit: cover;
+  filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.322));
+  animation: glow 2s linear infinite;
+  border-radius: 20px;
+  transition: all ease-in-out 0.4s;
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+.loginAbout img:hover {
+  transform: scale(1.04);
+}
+.loginAboutBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all ease-in-out 0.4s;
 }
 
 @keyframes glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgb(94, 94, 94));
+  }
 
-    0%,
-    100% {
-        filter: drop-shadow(0 0 5px rgb(255, 255, 255));
-    }
-
-    50% {
-        filter: drop-shadow(0 0 10px rgba(7, 92, 204, 0.7));
-    }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 123, 0, 0.548));
+  }
+}
+.formFields {
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 40vh;
+  text-align: center;
+}
+.formFields form {
+  animation: fade-in 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: all ease-in-out 0.3s;
+  box-sizing: border-box;
+  padding: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
-.formFields {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 300px;
-    max-width: 800px;
-    width: 100%;
-    padding: 20px;
-    transition: all ease-in-out .3s;
-    box-sizing: border-box;
-    padding: 20px;
-    font-size: 1.1rem;
-    font-weight: 500;
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .formFields h4 {
-    color: white;
-    padding: 20px;
-    font-size: 1.5rem;
-    font-weight: 300;
+  color: white;
+  padding: 20px 20px 0 20px;
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 
 .formFields a {
-    padding: 0;
-    margin: 0;
-    background-color: none;
-    text-decoration: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  text-decoration: underline;
+  font-weight: 450;
+  color: rgb(20, 99, 163);
 }
 
 .formFields button {
-    width: 100px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    transition: all ease-in-out .4s;
+  width: 100px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all ease-in-out 0.4s;
 }
 
 .formFields button:hover {
-    background-color: rgba(145, 145, 145, 0.507);
+  background-color: rgba(145, 145, 145, 0.507);
 }
-
-.loginContent {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    transition: all ease-in-out .4s;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+.formFields form a {
+  font-size: 1.1rem;
+  font-weight: 450;
+  background-color: transparent;
+  color: #999;
 }
-
-.loginAbout {
-    transition: all ease-in-out .4s;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(0, 0, 0);
-    height: 100%;
-    width: 100%;
-    padding: 20px;
-    border-radius: 5px;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px rgb(0, 0, 0, 0.4);
-    color: rgb(255, 255, 255);
+.formFields button {
+  border: 0;
+  background-color: white;
+  color: #000;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 1.1rem;
+  transition: all ease-in-out 0.3s;
+  margin: 10px 0;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  box-sizing: border-box;
 }
-
-.loginAbout h2 {
-    font-weight: 300;
-}
-
-.loginAbout p {
-    font-weight: 200;
-}
-
-.formFields button,
 .formFields input {
-    border: 0;
-    padding: 10px;
-    transition: all ease-in-out .3s;
-    margin: 10px 0;
-    outline: none;
-    border: 1px solid transparent;
-    border-radius: 7px;
-    box-sizing: border-box;
+  border: 0;
+  padding: 15px 10px;
+  transition: all ease-in-out 0.3s;
+  margin: 10px 0;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  box-sizing: border-box;
 }
 
 .formInput {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .formFields input:valid {
-    border: 1px solid green;
+  border: 1px solid green;
 }
 
 .formButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    width: 100%;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+}
+.loginAboutBox a {
+  color: #55555557;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+}
+.loginAboutBox a:hover {
+  color: #555555;
 }
 
 .formFields input {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    width: 100%;
-    max-width: 250px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  width: 100%;
 }
 
 .formFields input:active {
-    background-color: rgb(224, 224, 224);
+  background-color: rgb(224, 224, 224);
 }
 
 .formFields input:hover {
-    background-color: rgb(224, 224, 224);
+  background-color: rgb(224, 224, 224);
 }
 
 .formFields input:focus {
-    background-color: rgb(224, 224, 224);
+  background-color: rgb(224, 224, 224);
 }
 
 .formButton button {
-    font-weight: 700;
-    width: 100px;
-}
-
-.error {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: red;
-    margin-bottom: 10px;
-}
-
-.loginAbout a {
-    display: flex;
-    flex-direction: row;
-    font-size: 1rem;
-    padding: 20px;
-    color: rgb(255, 255, 255);
-}
-
-.loginAbout a:hover {
-    background-color: transparent;
+  font-weight: 600;
+  width: 100%;
 }
 
 @media (max-width: 800px) {
-    .loginContent {
-        flex-direction: column;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-    }
+  .loginAboutBox a {
+    color: #555555;
+  }
+  .loginContent {
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .formFields {
-        min-width: 100%;
-    }
+  .formFields {
+    min-width: 200px;
+    max-width: 300px;
+    min-height: 60vh;
+  }
 
-    .formButton {
-        flex-direction: row;
-        gap: 15px;
-    }
-
-    .formButton button {
-        width: 150px;
-    }
+  .formButton {
+    flex-direction: row;
+    gap: 15px;
+  }
 }

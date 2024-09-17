@@ -1,19 +1,59 @@
 .userPath {
-    display: flex;
-    padding: 40px 5px;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 5px;
+  gap: 30px;
 }
 
 .userPath button {
-    background-color: rgb(141, 214, 141);
+  background-color: rgb(255, 255, 255);
 }
 .userPath button:hover {
-    background-color: rgb(106, 174, 106);
+  background-color: rgba(255, 255, 255, 0.548);
 }
 
 @media screen and (max-width: 768px) {
-    .userPath {
-        flex-direction: column;
-    }
-    
+  .userPath {
+    flex-direction: column;
+  }
+}
+
+.wallpaperSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.wallpaperSelector h2 {
+  font-weight: 500;
+  color: rgb(66, 66, 66);
+}
+
+.wallpaperOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wallpaperRadio {
+  display: none;
+}
+
+.wallpaperPreview {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.wallpaperRadio:checked + .wallpaperPreview {
+  border-color: #005e9c;
+}
+
+.wallpaperSelector label img {
+  border-radius: 1px;
 }

@@ -1,51 +1,53 @@
-import React, { useState } from 'react'
-import Modal from 'react-modal';
-import style from './Styles/Task.module.css'
-import NavHome from '../../Pages/HomePage/NavHome'
-import LoginVerificaion from '../../Components/LoginVerification';
-import Button from '../../Components/Button'
-import Forms from '../../Components/Forms';
-import '../../assets/Styles/Modal.css';
-Modal.setAppElement('#root');
+import React, { useEffect } from "react";
+import "../../assets/Styles/Modal.css";
+import FormAddTask from "../../Components/Entities/Task/Forms/FormAddTask.jsx";
+import TaskCardInfo from "../../Components/Entities/Task/TaskCardInfo.jsx";
+import Button from "../../Components/General/Button.jsx";
+import CountView from "../../Components/General/CountView.jsx";
+import { useModal } from "../../Context/useModal.jsx";
+import style from "./Styles/Task.module.css";
+import useGetTaskData from "../../Hooks/Task/Get/useGetTasksData.jsx";
+import FormUpdateTask from "../../Components/Entities/Task/Forms/FormUpdateTask.jsx";
+import FormDeleteTask from "../../Components/Entities/Task/Forms/FormDeleteTask.jsx";
+import { useWallpaper } from "../../Context/WallpaperContext.jsx";
 
 export default function Task() {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [formAction, setFormAction] = useState('add');
+  const { openModal } = useModal();
+  const { fetchTasks } = useGetTaskData();
+  const { background } = useWallpaper();
 
-    function openModal(action) {
-        setFormAction(action);
-        setModalIsOpen(true);
+  const handleOpenModal = (action) => {
+    switch (action) {
+      case "add":
+        openModal(<FormAddTask onUserAction={fetchTasks} />);
+        break;
+      case "update":
+        openModal(<FormUpdateTask onUserAction={fetchTasks} />);
+        break;
+      case "delete":
+        openModal(<FormDeleteTask onUserAction={fetchTasks} />);
+        break;
+      default:
+        return;
     }
+  };
 
-    function closeModal() {
-        setModalIsOpen(false);
-    }
-
-    function handleItemAdded(item) {
-        closeModal();
-    }
-
-    return (
-        <div className='container'>
-            <LoginVerificaion />
-            <NavHome path='task'/>
-            <div className={style.buttonsContainer}>
-                <Button children='Add a new Project' onClick={() => openModal('add')} />
-                <Button children='Update project' onClick={() => openModal('update')} />
-                <Button children='Delete project' onClick={() => openModal('delete')} />
-            </div>
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                className={'modal'}
-            >
-                <Forms
-                    type='task'
-                    action={formAction}
-                    onItemAdded={handleItemAdded}
-                />
-                <Button onClick={closeModal} />
-            </Modal>
-        </div>
-    )
+  return (
+    <div
+      className="container"
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundSize: "cover",
+      }}
+    >
+      <CountView path="task" />
+      <TaskCardInfo Task={Task} />
+      <div className={style.buttonsContainer}>
+        <Button onClick={() => handleOpenModal("add")}>Add a new Task</Button>
+        <Button onClick={() => handleOpenModal("update")}>Update Task</Button>
+        <Button onClick={() => handleOpenModal("delete")}>Delete Task</Button>
+      </div>
+      <div className={style.modalContainer}></div>
+    </div>
+  );
 }
