@@ -3,12 +3,11 @@ import defaultPhoto from "../../assets/defaultPhoto.webp";
 import { useWallpaper } from "../../Context/WallpaperContext"; // Import the wallpaper context
 import useLogout from "../../Hooks/Logout/useLogout";
 import style from "./Styles/Profile.module.css";
+import bg1 from "../../assets/backgrounds/bg1.webp";
+import bg2 from "../../assets/backgrounds/bg2.webp";
+import bg3 from "../../assets/backgrounds/bg3.webp";
 
-const wallpapers = [
-  "src/assets/backgrounds/bg1.webp",
-  "src/assets/backgrounds/bg2.webp",
-  "src/assets/backgrounds/bg3.webp",
-]; // Wallpaper options
+const wallpapers = [bg1, bg2, bg3]; // Wallpaper options
 
 export default function Profile() {
   const { logout } = useLogout();
