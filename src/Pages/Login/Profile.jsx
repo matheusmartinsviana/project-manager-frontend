@@ -4,7 +4,11 @@ import useLogout from "../../Hooks/Logout/useLogout";
 import defaultPhoto from "../../assets/defaultPhoto.webp";
 import { useWallpaper } from "../../Context/WallpaperContext"; // Import the wallpaper context
 
-const wallpapers = ["public/bg1.webp", "public/bg2.webp", "public/bg3.webp"]; // Wallpaper options
+const wallpapers = [
+  "../assets/bg1.webp",
+  "../assets/bg2.webp",
+  "../assets/bg3.webp",
+]; // Wallpaper options
 
 export default function Profile() {
   const { logout } = useLogout();
@@ -15,7 +19,7 @@ export default function Profile() {
   const [showWallpaperModal, setShowWallpaperModal] = useState(false);
   const selectRef = useRef(null);
   const fileInputRef = useRef(null);
-  
+
   // Manage wallpaper selection
   const { background, setBackground } = useWallpaper();
 
