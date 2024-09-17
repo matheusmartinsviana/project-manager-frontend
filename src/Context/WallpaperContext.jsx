@@ -1,9 +1,9 @@
 // src/contexts/WallpaperContext.js
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 const WallpaperContext = createContext();
 
 export const WallpaperProvider = ({ children }) => {
-  const [background, setBackground] = useState("src/assets/bg1.webp");
+  const [background, setBackground] = useState("src/assets/backgrounds/bg1.webp");
 
   return (
     <WallpaperContext.Provider value={{ background, setBackground }}>

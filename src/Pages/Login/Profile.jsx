@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import style from "./Styles/Profile.module.css";
-import useLogout from "../../Hooks/Logout/useLogout";
+import { useEffect, useRef, useState } from "react";
 import defaultPhoto from "../../assets/defaultPhoto.webp";
 import { useWallpaper } from "../../Context/WallpaperContext"; // Import the wallpaper context
+import useLogout from "../../Hooks/Logout/useLogout";
+import style from "./Styles/Profile.module.css";
 
 const wallpapers = [
-  "src/assets/bg1.webp",
-  "src/assets/bg2.webp",
-  "src/assets/bg3.webp",
+  "src/assets/backgrounds/bg1.webp",
+  "src/assets/backgrounds/bg2.webp",
+  "src/assets/backgrounds/bg3.webp",
 ]; // Wallpaper options
 
 export default function Profile() {
