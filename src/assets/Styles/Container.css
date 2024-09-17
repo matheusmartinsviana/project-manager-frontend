@@ -2,9 +2,10 @@
   width: 100%;
   min-width: 600px;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
-  margin: 20px;
-  padding: 40px;
+  margin: 20px 20px 20px 200px;
+  padding: 20px;
   background: url('/public/4002676.jpg') no-repeat center;
   background: white;
   box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.555);
@@ -13,7 +14,8 @@
 
 @media screen and (max-width: 768px) {
   .container {
-    min-width: 300px;
+    margin: 20px 20px 88px 20px;
+    min-width: 200px;
   }
 }
 
