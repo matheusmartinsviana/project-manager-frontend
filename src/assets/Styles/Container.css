@@ -6,7 +6,7 @@
   flex-direction: column;
   margin: 20px 20px 20px 200px;
   padding: 20px;
-  background: url("../bg1.webp") no-repeat center;
+  background: url("src/assets/bg1.webp") no-repeat center;
   background: white;
   box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.555);
   border-radius: 5px;
