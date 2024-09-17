@@ -6,8 +6,8 @@ import { useWallpaper } from "../../Context/WallpaperContext"; // Import the wal
 
 const wallpapers = [
   "src/assets/bg1.webp",
-  "src/assets/bg1.webp",
-  "src/assets/bg1.webp",
+  "src/assets/bg2.webp",
+  "src/assets/bg3.webp",
 ]; // Wallpaper options
 
 export default function Profile() {
