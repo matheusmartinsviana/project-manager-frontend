@@ -1,10 +1,10 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import { FaHome, FaTasks } from "react-icons/fa";
-import { FaUserPen, FaFilePen, FaRegShareFromSquare } from "react-icons/fa6";
+import { FaFilePen, FaRegShareFromSquare } from "react-icons/fa6";
 import style from "./Styles/Navbar.module.css";
 import { useNavigate } from "react-router-dom";
 import pmlogo from "../assets/pmlogo.webp";
+import { PiCaretUp } from "react-icons/pi";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -66,6 +66,7 @@ export default function Navbar() {
       </div>
       <footer className={style.navUnderFooter}>
         <a
+          title="Know more about the creator"
           href="https://github.com/matheusmartinsviana"
           target="_blank"
           rel="noopener noreferrer"
@@ -74,6 +75,11 @@ export default function Navbar() {
           <FaRegShareFromSquare size={16} />
         </a>
       </footer>
+      <button className={style.arrowToTop} aria-label="Scroll to top">
+        <a className={style.linkToTop} href="#">
+          <PiCaretUp size={35} color="grey" />
+        </a>
+      </button>
     </nav>
   );
 }
