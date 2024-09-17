@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useLogout = () => {
   const [logouted, setLogouted] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const logout = async () => {
     setLoading(true);
     setError("");
@@ -25,6 +26,7 @@ const useLogout = () => {
 
       const result = await response.json();
       setLogouted(result);
+      navigate("/login");
       return result;
     } catch (err) {
       setError(err.message || "Login failed");
@@ -34,11 +36,7 @@ const useLogout = () => {
     }
   };
 
-  useEffect(() => {
-    logout();
-  });
-
-  return { logouted, loading, error };
+  return { logout, loading, error };
 };
 
 export default useLogout;

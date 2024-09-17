@@ -41,7 +41,7 @@ export default function CountView(props) {
 
   return (
     <span className={style.Count}>
-      {props.path}s: {result.length} <span></span>
+      {props.path}s: {result.length}
     </span>
   );
 }

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import Input from "../../../General/Input";
 import Select from "../../../General/Select";
@@ -32,7 +31,8 @@ const FormAddTask = ({ onUserAction }) => {
       }
 
       if (response.error) {
-        return error;
+        setSuccess("");
+        return;
       }
 
       setSuccess("Task added successfully");
@@ -60,54 +60,52 @@ const FormAddTask = ({ onUserAction }) => {
   };
 
   return (
-    <>
-      <Form action={handleSubmit}>
-        <Input
-          type="text"
-          name="title"
-          title="title"
-          placeholder="Title"
-          minLength={3}
-          maxLength={30}
-          value={task.title}
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-        <Input
-          type="text"
-          name="description"
-          title="description"
-          placeholder="Description"
-          minLength={3}
-          maxLength={30}
-          value={task.description}
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-        <Select
-          id="project-select"
-          value={selectedProjectId || "0"}
-          onChange={handleProjectSelect}
-          required
-        >
-          <option value="0" disabled>
-            {loading ? "Loading projects..." : "Select a project"}
+    <Form action={handleSubmit}>
+      <Input
+        type="text"
+        name="title"
+        title="title"
+        placeholder="Title"
+        minLength={3}
+        maxLength={30}
+        value={task.title}
+        onChange={handleChange}
+        required
+        autoComplete="off"
+      />
+      <Input
+        type="text"
+        name="description"
+        title="description"
+        placeholder="Description"
+        minLength={3}
+        maxLength={30}
+        value={task.description}
+        onChange={handleChange}
+        required
+        autoComplete="off"
+      />
+      <Select
+        id="project-select"
+        value={selectedProjectId || "0"}
+        onChange={handleProjectSelect}
+        required
+      >
+        <option value="0" disabled>
+          {loading ? "Loading projects..." : "Select a project"}
+        </option>
+        {projects.map((project) => (
+          <option key={project.id} value={project.id}>
+            {project.name}
           </option>
-          {projects.map((project) => (
-            <option key={project.id} value={project.id}>
-              {project.name}
-            </option>
-          ))}
-        </Select>
-        {error && <p className="error-message">{error}</p>}
-        <button id="submit-button" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Adding task..." : "Add task"}
-        </button>
-        {success && <p className="success-message">{success}</p>}
-      </Form>
-    </>
+        ))}
+      </Select>
+      {error && <p className="error-message">{error}</p>}
+      <button id="submit-button" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Adding task..." : "Add task"}
+      </button>
+      {success && <p className="success-message">{success}</p>}
+    </Form>
   );
 };
 

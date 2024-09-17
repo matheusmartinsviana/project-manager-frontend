@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import style from "./Styles/Profile.module.css";
-import { useNavigate } from "react-router-dom";
+import useLogout from "../../Hooks/Logout/useLogout";
 
 export default function Profile() {
-  const navigate = useNavigate();
+  const { logout } = useLogout();
   const [profilePhoto, setProfilePhoto] = useState(
     () => localStorage.getItem("profilePhoto") || ""
   );
@@ -25,21 +25,6 @@ export default function Profile() {
     changeProfilePhoto(profilePhoto);
   }, [profilePhoto]);
 
-  const handleLogout = async () => {
-    try {
-      await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/user/logout",
-        {
-          method: "POST",
-          credentials: "include",
-        }
-      );
-      navigate("/login");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
-
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -53,7 +38,7 @@ export default function Profile() {
 
   const handleModalConfirm = () => {
     setShowModal(false);
-    handleLogout();
+    logout();
   };
 
   const handleModalCancel = () => {

@@ -18,6 +18,7 @@ const FormUpdateTask = ({ onUserAction }) => {
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
+    status: "pending",
     projectId: null,
     userId: null,
   });
@@ -68,6 +69,7 @@ const FormUpdateTask = ({ onUserAction }) => {
       setTaskData({
         title: selectedTask.title,
         description: selectedTask.description,
+        status: selectedTask.status,
         projectId: selectedTask.projectId,
         userId: selectedTask.userId,
       });
@@ -149,6 +151,17 @@ const FormUpdateTask = ({ onUserAction }) => {
             required
             autoComplete="off"
           />
+          <Select>
+            <option value="0" disabled>
+              Select a status
+            </option>
+            <option value={"pending"}>
+              Done
+            </option>
+            <option value={"pending"}>
+              Pending
+            </option>
+          </Select>
 
           <label htmlFor="project-select">Choose a project:</label>
           <Select
