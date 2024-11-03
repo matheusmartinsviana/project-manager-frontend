@@ -2,7 +2,7 @@ const useAddProject = () => {
   const addProject = async (project) => {
     try {
       const response = await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/project",
+        "https://project-manager-4gpt.onrender.com/api/v1/project",
         {
           method: "POST",
           headers: {

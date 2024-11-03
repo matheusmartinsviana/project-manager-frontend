@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const useLogout = () => {
@@ -11,7 +11,7 @@ const useLogout = () => {
     setError("");
     try {
       const response = await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/user/logout",
+        "https://project-manager-4gpt.onrender.com/api/v1/user/logout",
         {
           method: "POST",
           credentials: "include",

@@ -8,7 +8,7 @@ export default function CountView(props) {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `https://project-manager-74i7.onrender.com/api/v1/${props.path}/`,
+        `https://project-manager-4gpt.onrender.com/api/v1/${props.path}/`,
         {
           method: "GET",
           credentials: "include",

@@ -2,12 +2,10 @@ const useDeleteProject = () => {
   const deleteProject = async (id) => {
     try {
       const response = fetch(
-        `https://project-manager-74i7.onrender.com/api/v1/project/${id}`,
+        `https://project-manager-4gpt.onrender.com/api/v1/project/${id}`,
         {
+          credentials: "include",
           method: "DELETE",
-          headers: {
-            Authorization: `${localStorage.getItem("token")}`,
-          },
         }
       );
 
