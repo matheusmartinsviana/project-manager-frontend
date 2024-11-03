@@ -19,7 +19,7 @@ export default function RegisterForm() {
 
     try {
       const response = await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/user/",
+        "https://project-manager-frontend-slmf.onrender.com/api/v1/user/",
         {
           method: "POST",
           headers: {

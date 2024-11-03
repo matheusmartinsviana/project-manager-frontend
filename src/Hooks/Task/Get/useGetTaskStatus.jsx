@@ -8,7 +8,7 @@ const useGetTasksStatus = (status) => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://project-manager-74i7.onrender.com/api/v1/task",
+        "https://project-manager-frontend-slmf.onrender.com/api/v1/task",
         {
           method: "GET",
           credentials: "include",

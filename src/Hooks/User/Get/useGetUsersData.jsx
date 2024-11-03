@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const useGetUsersData = () => {
   const [users, setUsers] = useState([]);
@@ -9,7 +9,7 @@ const useGetUsersData = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://project-manager-74i7.onrender.com/api/v1/user/`,
+        `https://project-manager-frontend-slmf.onrender.com/api/v1/user/`,
         {
           method: "GET",
           credentials: "include",

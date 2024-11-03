@@ -1,11 +1,12 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
 
-const url = "https://project-manager-74i7.onrender.com/api/v1/user/auth";
+const url =
+  "https://project-manager-frontend-slmf.onrender.com/api/v1/user/auth";
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
