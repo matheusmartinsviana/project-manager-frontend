@@ -9,7 +9,7 @@ const useUpdateTask = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://project-manager-frontend-slmf.onrender.com/api/v1/task/${id}`,
+        `https://project-manager-4gpt.onrender.com/api/v1/task/${id}`,
         {
           method: "PUT",
           headers: {

@@ -9,7 +9,7 @@ const useGetProjectById = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://project-manager-frontend-slmf.onrender.com/api/v1/project/${projectId}`,
+        `https://project-manager-4gpt.onrender.com/api/v1/project/${projectId}`,
         {
           method: "GET",
           credentials: "include",

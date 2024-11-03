@@ -2,7 +2,7 @@ const useUpdateProject = () => {
   const updateProject = async (project, id) => {
     try {
       const response = await fetch(
-        `https://project-manager-frontend-slmf.onrender.com/api/v1/project/${id}`,
+        `https://project-manager-4gpt.onrender.com/api/v1/project/${id}`,
         {
           method: "PUT",
           headers: {

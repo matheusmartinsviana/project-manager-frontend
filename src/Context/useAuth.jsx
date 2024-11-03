@@ -5,8 +5,7 @@ const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
 
-const url =
-  "https://project-manager-frontend-slmf.onrender.com/api/v1/user/auth";
+const url = "https://project-manager-4gpt.onrender.com/api/v1/user/auth";
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

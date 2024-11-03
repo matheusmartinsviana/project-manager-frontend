@@ -11,7 +11,7 @@ const useLogout = () => {
     setError("");
     try {
       const response = await fetch(
-        "https://project-manager-frontend-slmf.onrender.com/api/v1/user/logout",
+        "https://project-manager-4gpt.onrender.com/api/v1/user/logout",
         {
           method: "POST",
           credentials: "include",

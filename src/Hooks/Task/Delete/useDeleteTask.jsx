@@ -2,7 +2,7 @@ const useDeleteTask = () => {
   const deleteTask = async (id) => {
     try {
       const response = fetch(
-        `https://project-manager-frontend-slmf.onrender.com/api/v1/task/${id}`,
+        `https://project-manager-4gpt.onrender.com/api/v1/task/${id}`,
         {
           method: "DELETE",
           credentials: "include",
